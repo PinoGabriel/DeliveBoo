@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger("restaurant_id")->nullable();
             $table->foreign("restaurant_id")->references("id")->on("restaurants")->nullOnDelete();
             $table->string('status', 50);
-            $table->decimal('total_amount', 5,2);
             $table->string('client_name', 50);
             $table->string('client_surname', 50);
             $table->string('client_mail', 100);

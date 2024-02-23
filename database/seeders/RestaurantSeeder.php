@@ -21,7 +21,7 @@ class RestaurantSeeder extends Seeder
 
         foreach ($array_restaurant as $restaurant_item) {
             $newRestaurant = new Restaurant();
-            $newRestaurant->user_id = $faker->randomElement($this->getUserID());
+            $newRestaurant->user_id = $faker->unique()->randomElement($this->getUserID());
             $newRestaurant->p_iva = $faker->numberBetween(11111111111, 99999999999);
             $newRestaurant->fill($restaurant_item);
             $newRestaurant->save();

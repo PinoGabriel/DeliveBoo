@@ -19,8 +19,8 @@ return new class extends Migration {
             $table->string('name', 50);
             $table->text('description');
             $table->decimal('price', 5,2);
-            $table->boolean("visibility")->default(true);
             $table->tinyText('img') ->nullable();
+            $table->boolean("visibility")->default(true);
             $table->timestamps();
         });
     }
