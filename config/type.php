@@ -33,7 +33,7 @@ return [
         'img' => 'pizza',
         'description'=> '
         La pizza è un piatto italiano composto da una base di impasto condita con salsa di pomodoro, formaggio e vari ingredienti come salame, funghi e olive. Cotta in forno, offre una deliziosa combinazione di croccantezza, morbidezza e sapori.',
-    ]
+    ],
     [
         'name' => 'Gluten Free',
         'img' => 'gluten_free',
@@ -50,7 +50,7 @@ return [
         'name' => 'Vegeterian',
         'img' => 'vegetarian',
         'description'=> 'La cucina vegetariana si caratterizza per l esclusione della carne e del pesce, ma include l uso di latticini e uova, offrendo una varietà di piatti a base di verdure, legumi, cereali e latticini per una dieta equilibrata e sana.',
-    ]
+    ],
     [
         'name' => 'Dessert',
         'img' => 'dessert',
@@ -65,7 +65,7 @@ return [
         'name' => 'Fast Food',
         'img' => 'fast_food',
         'description'=> 'La cucina da fast food si distingue per piatti veloci e convenienti, spesso fritti o preparati rapidamente, come hamburger, patatine fritte e bevande gassate, offrendo opzioni immediate ma solitamente meno salutari.',
-    ]
+    ],
     [
         'name' => 'Burgers',
         'img' => 'burgers',
