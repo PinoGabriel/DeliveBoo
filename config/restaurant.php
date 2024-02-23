@@ -2,59 +2,74 @@
 
 return [
     [
-        'name' => 'Italian',
-        'img' => 'italian',
-        'description'=> 'La cucina italiana è un trionfo di sapori freschi e autentici, con ingredienti di alta qualità e una forte radice nella tradizione regionale.',
+        'name' => 'Gusto Divino',
+        'img' => 'placeholder',
+        'description' => '
+        Benvenuti al Gusto Divino! Godetevi autentiche pizze con crosta sottile e piatti italiani tradizionali preparati dal nostro chef esperto. Con atmosfera accogliente e dettagli rustici, offriamo un esperienza culinaria che unisce tradizione e creatività in ogni boccone. Perfetto per serate romantiche o incontri conviviali con amici e familiari.',
+        'address' => 'Via delle Sere Luminose, 42, Quartiere Incantato, 00123 Città Sogno, Italia',
     ],
     [
-        'name' => 'Meat',
-        'img' => 'meat',
-        'description'=> 'La cucina a base di carne offre un esperienza culinaria appagante con preparazioni succulente e aromatiche, arricchite da sapienti abbinamenti di spezie e salse',
+        'name' => 'DragonWok & Sushi Haven',
+        'img' => 'placeholder',
+        'description' => '
+        Benvenuti al DragonWok & Sushi Haven, dove l arte della cucina cinese si fonde armoniosamente con la freschezza del sushi giapponese. Il nostro ristorante è un rifugio culinario che offre una vasta gamma di delizie orientali, dalle croccanti specialità del wok alle creazioni artistiche del sushi.',
+        'address' => 'Via Orientale, 88, Quartiere Zen, 12345 Metropoli Esotica, Italia',
     ],
     [
-        'name' => 'Chinese',
-        'img' => 'chinese',
-        'description'=> 'La cucina cinese si contraddistingue per la diversità di sapori e l uso creativo di ingredienti come riso, soia, zenzero e spezie, offrendo un equilibrio armonioso di gusti e aromi.',
+        'name' => 'Sabor y Asador',
+        'img' => 'placeholder',
+        'description' => '
+        Benvenuti a Sabor y Asador, il paradiso del sapore messicano e delle prelibatezze di carne. Situato in Calle del Sazón nel cuore del Barrio del Fuego, il nostro ristorante offre un esplosione di sapori autentici dalla cucina messicana, accompagnata da selezioni di carne alla griglia irresistibili.',
+        'address' => 'Via del Sapore, 55, Quartiere del Fuoco, 56789 Città del Sapore, Italia',
     ],
     [
-        'name' => 'Mexican',
-        'img' => 'mexican',
-        'description'=> '
-        La cucina messicana è una festa di sapori intensi e colorati, con peperoncini, mais, aglio, pomodori e avocado in piatti come tacos, guacamole e mole, offrendo una deliziosa miscela di piccantezza e freschezza. F',
+        'name' => 'Senza Glutine Delight',
+        'img' => 'placeholder',
+        'description' => '
+        Benvenuti a Senza Glutine Delight in Via Libera, Quartiere Salute. Il nostro ristorante è dedicato completamente al mondo senza glutine, offrendo piatti deliziosi e creativi senza compromettere il gusto. Un esperienza gastronomica senza preoccupazioni per gli amanti del cibo sano e gustoso.',
+        'address' => 'Via Libera, 24, Quartiere Salute, 12345 Città Vitalità, Italia',
     ],
     [
-        'name' => 'Sushi',
-        'img' => 'sushi',
-        'description'=> '
-        Il sushi giapponese è un arte culinaria che unisce riso con aceto, pesce crudo o cotto, e altri ingredienti come alga nori o verdure, creando una deliziosa combinazione di sapori freschi e texture raffinate nelle varianti di Nigiri, Sashimi e Maki.',
+        'name' => 'Verde Gastronomia',
+        'img' => 'placeholder',
+        'description' => '
+        Verde Gastronomia, nel Quartiere Vegano, propone una cucina vegana e vegetariana con ingredienti freschi e sostenibili. Dai colorati piatti gourmet a quelli caldi e avvolgenti, ogni creazione riflette l impegno per una cucina che celebra gusto e salute, offrendo un esperienza culinaria completa per il benessere di corpo e anima.',
+        'address' => 'Via dei Sapori Verdi, 33, Quartiere Vegano, 56789 Città Sana, Italia',
     ],
     [
-        'name' => 'Pizza',
-        'img' => 'pizza',
-        'description'=> '
-        La pizza è un piatto italiano composto da una base di impasto condita con salsa di pomodoro, formaggio e vari ingredienti come salame, funghi e olive. Cotta in forno, offre una deliziosa combinazione di croccantezza, morbidezza e sapori.',
-    ]
-    [
-        'name' => 'Gluten Free',
-        'img' => 'gluten_free',
-        'description'=> '
-        La cucina gluten-free si caratterizza per l esclusione del glutine, sostituendo le farine tradizionali con alternative senza glutine come riso, mais e quinoa, adatta a chi ha intolleranza al glutine o segue uno stile di vita senza glutine.',
+        'name' => 'Dolci Delizie',
+        'img' => 'placeholder',
+        'description' => '
+        Benvenuti a Dolci Delizie, il paradiso per gli amanti del dolce. Situato in Via dei Dolci nel Quartiere Gelato, offriamo un ampia selezione di dessert irresistibili e gelati artigianali. Dal gusto classico alle creazioni più audaci, ogni boccone è un viaggio nel mondo dei sapori dolci, creando un atmosfera di puro piacere per i vostri sensi.',
+        'address' => 'Via dei Dolci, 12, Quartiere Gelato, 12345 Città Golosa, Italia',
     ],
     [
-        'name' => 'Vegan',
-        'img' => 'vegan',
-        'description'=> '
-        La cucina vegana si basa sull esclusione di ingredienti di origine animale, privilegiando piante, cereali, legumi, frutta e verdura, creando piatti creativi e sani che rispettano principi etici e sostenibili.',
+        'name' => 'QuickBite Burger Hub',
+        'img' => 'placeholder',
+        'description' => '
+        QuickBite Burger Hub, situato in Via del Gusto Veloce nel Quartiere FastFood, è il rifugio dell hamburger veloce. Offriamo un ampia selezione di deliziosi hamburger e fast food, garantendo sapori irresistibili e un esperienza di gusto rapida e soddisfacente per chi è sempre in movimento.',
+        'address' => 'Via del Gusto Veloce, 55, Quartiere FastFood, 56789 Città Veloce, Italia',
     ],
     [
-        'name' => 'Vegeterian',
-        'img' => 'vegetarian',
-        'description'=> 'La cucina vegetariana si caratterizza per l esclusione della carne e del pesce, ma include l uso di latticini e uova, offrendo una varietà di piatti a base di verdure, legumi, cereali e latticini per una dieta equilibrata e sana.',
-    ]
+        'name' => 'Sapore Vegano',
+        'img' => 'placeholder',
+        'description' => '
+        Sapore Vegano, in Via degli Aromi nel Quartiere Verde, è un ristorante che celebra la cucina italiana in chiave vegana. Con ingredienti freschi e creatività culinaria, offriamo piatti deliziosi che catturano l autenticità dei sapori italiani senza compromettere il rispetto per gli animali. Un esperienza culinaria che delizia i sensi e nutre l anima',
+        'address' => 'Via degli Aromi, 15, Quartiere Verde, 12345 Città Gustosa, Italia',
+    ],
     [
-        'name' => 'Dessert',
-        'img' => 'dessert',
-        'description'=> 'Il dessert è la dolce conclusione di un pasto, spaziando da torte, cioccolatini a frutta fresca e altri deliziosi piaceri dolci, offrendo un esplosione di sapori e soddisfazione per il palato.',
+        'name' => 'Mare & Delizia',
+        'img' => 'placeholder',
+        'description' => '
+        Mare & Delizia, situato in Via dei Pescatori nel Quartiere Sapore di Mare, è il rifugio perfetto per gli amanti del pesce fresco. Offriamo piatti raffinati e deliziosi, celebrando autentici sapori marini con ingredienti di alta qualità. Un esperienza gastronomica che incarna la bontà del mare in ogni boccone.',
+        'address' => 'Via dei Pescatori, 20, Quartiere Sapore di Mare, 12345 Città del Pesce, Italia',
+    ],
+    [
+        'name' => 'Kebab Kingdom',
+        'img' => 'placeholder',
+        'description' => '
+        Kebab Kingdom, in Via delle Spezie nel Quartiere Kebab Street, offre un autentica esperienza culinaria kebab. Con ingredienti freschi e sapori speziati, ogni boccone è un viaggio delizioso in un regno di autentiche prelibatezze.',
+        'address' => 'Via delle Spezie, 30, Quartiere Kebab Street, 56789 Città Saporita, Italia',
     ],
 
 ];

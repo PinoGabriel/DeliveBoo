@@ -12,12 +12,12 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(Faker $faker, $user_sum): void
+    public function run(Faker $faker,): void
     {
         $newUser = new User();
         $newUser->name = "Admin";
         $newUser->email = "admin@gmail.com";
-        $newUser->password = Hash::make("1234");
+        $newUser->password = Hash::make("password");
         $newUser->save();
 
 
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             $newUser = new User();
             $newUser->name = $faker->name();
             $newUser->email = $faker->email();
-            $newUser->password = Hash::make("1234");
+            $newUser->password = Hash::make("password");
             $newUser->save();
         }
     }
