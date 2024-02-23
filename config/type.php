@@ -15,7 +15,7 @@ return [
         'name' => 'Chinese',
         'img' => 'chinese',
         'description'=> 'La cucina cinese si contraddistingue per la diversità di sapori e l uso creativo di ingredienti come riso, soia, zenzero e spezie, offrendo un equilibrio armonioso di gusti e aromi.',
-    ]
+    ],
     [
         'name' => 'Mexican',
         'img' => 'mexican',
