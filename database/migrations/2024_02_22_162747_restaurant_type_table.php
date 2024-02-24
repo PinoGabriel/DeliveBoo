@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('type_restaurant', function (Blueprint $table) {
-            $table->foreignId('type_id')->constrained()->cascadeOnDelete();
+        Schema::create('restaurant_type', function (Blueprint $table) {
             $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('type_id')->constrained()->cascadeOnDelete();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_restaurant');
+        Schema::dropIfExists('restaurant_type');
     }
 };
