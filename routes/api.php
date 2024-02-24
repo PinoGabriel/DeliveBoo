@@ -42,3 +42,10 @@ Route::get('/dishes', function () {
         'data' => Dish::with(['restaurant', 'orders'])->get()
     ]);
 });
+
+Route::get('/orders', function () {
+    return response()->json([
+        'success' => true,
+        'data' => Order::with(['restaurant', 'dishes'])->get()
+    ]);
+});
