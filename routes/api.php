@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Restaurant;
 use App\Models\Type;
 use App\Models\Dish;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,13 @@ Route::get('/restaurants', function () {
 Route::get('/types', function () {
     return response()->json([
         'success' => true,
-        'data' => Type::all()
+        'data' => Type::with(['restaurants'])->get()
+    ]);
+});
+
+Route::get('/dishes', function () {
+    return response()->json([
+        'success' => true,
+        'data' => Dish::with(['restaurant', 'orders'])->get()
     ]);
 });
