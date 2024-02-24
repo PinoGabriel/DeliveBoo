@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/restaurants', function () {
     return response()->json([
         'success' => true,
-        'data' => Restaurant::all()
+        'data' => Restaurant::with(['user', 'types'])->get()
     ]);
 });
 
