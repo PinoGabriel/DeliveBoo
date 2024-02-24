@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\API\DishAPIController;
+use App\Http\Controllers\API\OrderAPIController;
+use App\Http\Controllers\API\TypeAPIController;
+use App\Http\Controllers\API\RestaurantAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Restaurant;
-use App\Models\Type;
-use App\Models\Dish;
-use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,30 +22,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/restaurants', function () {
-    return response()->json([
-        'success' => true,
-        'data' => Restaurant::with(['user', 'types'])->get()
-    ]);
-});
+Route::get('/restaurants', [RestaurantAPIController::class, 'index']);
+Route::get('/restaurants/{id}', [RestaurantAPIController::class, 'show']);
 
-Route::get('/types', function () {
-    return response()->json([
-        'success' => true,
-        'data' => Type::with(['restaurants'])->get()
-    ]);
-});
+Route::get('/types', [TypeAPIController::class, 'index']);
+Route::get('/types/{id}', [TypeAPIController::class, 'show']);
 
-Route::get('/dishes', function () {
-    return response()->json([
-        'success' => true,
-        'data' => Dish::with(['restaurant', 'orders'])->get()
-    ]);
-});
+Route::get('/dishes', [DishAPIController::class, 'index']);
+Route::get('/dishes/{id}', [DishAPIController::class, 'show']);
 
-Route::get('/orders', function () {
-    return response()->json([
-        'success' => true,
-        'data' => Order::with(['restaurant', 'dishes'])->get()
-    ]);
-});
+Route::get('/orders', [OrderAPIController::class, 'index']);
+Route::get('/orders/{id}', [OrderAPIController::class, 'show']);
