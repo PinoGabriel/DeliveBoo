@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Dish;
+use App\Models\Restaurant;
 use App\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -10,24 +11,28 @@ use Illuminate\Support\Facades\DB;
 
 class DishOrderSeeder extends Seeder
 {
-    /**
-     
-Run the database seeds.*/
     public function run(): void
     {
-        $dishes = Dish::all();
         $orders = Order::all();
 
-        foreach ($dishes as $dish) {
-            $dishId = $dish->id;
-            $orderId = $orders->random()->id;
-            $quantity = rand(1, 10);
+        foreach ($orders as $order) {
+            $menu = Restaurant::with('dishes')->find(Order::find($order->id)->restaurant->id)->dishes;
 
-            DB::table('dish_order')->insert([
-                'dish_id' => $dishId,
-                'order_id' => $orderId,
-                'quantity' => $quantity,
-            ]);
+            $orderedDishesCount = rand(1, 10);
+            for ($i = 0; $i < $orderedDishesCount; $i++) {
+                $dishId = $menu->random()->id;
+                $quantity = rand(1, 5);
+
+                if (DB::table('dish_order')->where('dish_id', $dishId)->where('order_id', $order->id)->exists()) {
+                    continue;
+                } else {
+                    DB::table('dish_order')->insert([
+                        'dish_id' => $dishId,
+                        'order_id' => $order->id,
+                        'quantity' => $quantity,
+                    ]);
+                }
+            }
         }
     }
 }
