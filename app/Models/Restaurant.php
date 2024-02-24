@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class restaurant extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'img',
+        'description',
+        'address'
+    ];
 
     public function user()
     {
@@ -19,4 +25,3 @@ class restaurant extends Model
         return $this->belongsToMany(Type::class);
     }
 }
-
