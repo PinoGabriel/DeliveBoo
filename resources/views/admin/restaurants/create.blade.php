@@ -49,7 +49,7 @@
                 <div class="mb-3 d-none">
                     <label for="user_id" class="form-label">User</label>
                     <select name="user_id" id="user_id" class="form-select">
-                        <option value="{{ $user_id }}" selected>{{ Auth::user()->name }}</option>
+                        <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
                     </select>
                 </div>
         </div>
