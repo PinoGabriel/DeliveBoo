@@ -98,13 +98,8 @@ class RestaurantController extends Controller
      */
     public function update(UpdaterestaurantRequest $request, Restaurant $restaurant)
     {
-        $data = $request->validated();
-        $restaurant->update($data);
-        if ($request->filled("types")) {
-            $data["types"] = array_filter($data["types"]) ? $data["types"] : [];
-            $restaurant->types()->sync($data["types"]);
-        }
-
+        $restaurant->types()->sync($request->types);
+        $restaurant->update($request->all());
         return redirect()->route("admin.restaurants.show", $restaurant->id);
     }
 
