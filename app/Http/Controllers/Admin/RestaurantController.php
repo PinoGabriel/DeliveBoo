@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\restaurant;
 use App\Http\Requests\StorerestaurantRequest;
 use App\Http\Requests\UpdaterestaurantRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class RestaurantController extends Controller
 {
