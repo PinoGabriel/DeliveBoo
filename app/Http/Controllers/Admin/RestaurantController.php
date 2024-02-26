@@ -17,13 +17,13 @@ class RestaurantController extends Controller
      */
 
 
-    public function index()
-    {
-        $restaurants = Restaurant::all();
-        $types = Type::all();
-
-        return view("admin.restaurants.index", compact("restaurants", "types"));
-    }
+     public function index()
+     {
+         $user = auth()->user();
+         $types = Type::all();
+ 
+         return view("admin.restaurants.index", compact("user", "types"));
+     }
 
     /**
      * Show the form for creating a new resource.
