@@ -11,6 +11,7 @@ class restaurant extends Model
     protected $fillable = [
         'name',
         'img',
+        'p_iva',
         'description',
         'address'
     ];

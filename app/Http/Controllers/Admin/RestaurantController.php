@@ -32,8 +32,9 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
         $types = Type::all();
-        return view("admin.restaurants.create", compact("types"));
+        return view("admin.restaurants.create", compact("user","types"));
     }
 
     /**
@@ -44,6 +45,8 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
+        
+
         $data = $request->all();
 
         $newRestaurant = new Restaurant();    
@@ -65,8 +68,9 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+        $user = auth()->user();
         $types = Type::all();
-        return view("admin.restaurants.show", compact("restaurant", "types"));
+        return view("admin.restaurants.show", compact("user","restaurant", "types"));
     }
 
     /**
@@ -77,8 +81,9 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
+        $user = auth()->user();
         $types = Type::all();
-        return view("admin.restaurants.edit", compact("restaurant", "types"));
+        return view("admin.restaurants.edit", compact("user","restaurant", "types"));
     }
 
     /**
