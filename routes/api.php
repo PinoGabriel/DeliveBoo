@@ -4,6 +4,7 @@ use App\Http\Controllers\API\DishAPIController;
 use App\Http\Controllers\API\OrderAPIController;
 use App\Http\Controllers\API\TypeAPIController;
 use App\Http\Controllers\API\RestaurantAPIController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,8 @@ Route::get('/dishes/{id}', [DishAPIController::class, 'show']);
 
 Route::get('/orders', [OrderAPIController::class, 'index']);
 Route::get('/orders/{id}', [OrderAPIController::class, 'show']);
+
+Route::get('/users', function () {
+    $users = User::with(['restaurant'])->get();
+    return response()->json(['users' => $users]);
+});
