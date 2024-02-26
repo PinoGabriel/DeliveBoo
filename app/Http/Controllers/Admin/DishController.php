@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Dish;
-use App\Models\Restaurant;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 
 class DishController extends Controller
 {
@@ -19,9 +18,9 @@ class DishController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $restaurants = Restaurant::all();
+        $dishes = Dish::all();
 
-        return view("admin.dishes.index", compact("user", "restaurants"));
+        return view("admin.dishes.index", compact("user", "dishes"));
     }
 
     /**
@@ -31,7 +30,8 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        $user = User::find(Auth::id());
+        return view("admin.dishes.create", compact('user')));
     }
 
     /**
@@ -42,7 +42,18 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+        $newDish = new Dish();
+        $newDish->fill($data);
+        $newDish->save();
+
+        if ($request->types) {
+            $newDish->types()->attach($request->types);
+        }
+
+        return redirect()->route("admin.dishes.show", $newDish->id);
     }
 
     /**
@@ -53,7 +64,8 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+        $user = auth()->user();
+        return view("admin.dishes.show", compact("user", "dish"));
     }
 
     /**
@@ -64,7 +76,8 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+        $user = auth()->user();
+        return view("admin.dishes.edit", compact("user", "dish"));
     }
 
     /**
@@ -76,7 +89,9 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-        //
+        $dish->types()->sync($request->types);
+        $dish->update($request->all());
+        return redirect()->route("admin.dishes.show", $dish->id);
     }
 
     /**
