@@ -44,15 +44,21 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="address" class="form-label">Indirizzo</label>
+                    <label for="address" class="form-label @error('address') is-invalid @enderror">Indirizzo</label>
                     <input type="text" class="form-control" id="address" name="address"
                         value="{{ old('address', $restaurant->address) }}">
+                    @error('address')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
         </div>
         <div class="mb-3">
             <label for="img" class="form-label">Immagine:</label>
-            <input type="text" class="form-control" id="img" name="img"
+            <input type="text" class="form-control @error('img') is-invalid @enderror" id="img" name="img"
                 value="{{ old('img', $restaurant->img) }}">
+            @error('img')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="type" class="form-label">Tipi:</label>

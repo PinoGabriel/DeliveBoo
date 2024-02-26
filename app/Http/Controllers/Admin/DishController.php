@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Dish;
+use App\Models\Restaurant;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,10 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+        $restaurants = Restaurant::all();
+
+        return view("admin.dishes.index", compact("user", "restaurants"));
     }
 
     /**

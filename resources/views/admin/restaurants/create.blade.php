@@ -44,12 +44,13 @@
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Indirizzo</label>
-                    <input type="text" class="form-control" id="address" name="address" value="{{ old('address') ?? '' }}">
+                    <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address"
+                        value="{{ old('address') ?? '' }}">
                 </div>
         </div>
         <div class="mb-3">
             <label for="img" class="form-label">Immagine:</label>
-            <input type="text" class="form-control" id="img" name="img" value="{{ old('img') ?? '' }}">
+            <input type="text" class="form-control @error('img') is-invalid @enderror" id="img" name="img" value="{{ old('img') ?? '' }}">
         </div>
         <div class="mb-3">
             <label for="type" class="form-label">Tipi:</label>
