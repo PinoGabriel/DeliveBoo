@@ -46,6 +46,12 @@
                     <label for="address" class="form-label">Indirizzo</label>
                     <input type="text" class="form-control" id="address" name="address">
                 </div>
+                <div class="mb-3 d-none">
+                    <label for="user_id" class="form-label">User</label>
+                    <select name="user_id" id="user_id" class="form-select">
+                        <option value="{{ $user_id }}" selected>{{ Auth::user()->name }}</option>
+                    </select>
+                </div>
         </div>
         <div class="mb-3">
             <label for="img" class="form-label">Immagine:</label>

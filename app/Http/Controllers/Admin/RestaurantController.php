@@ -7,6 +7,8 @@ use App\Models\Type;
 use App\Http\Requests\StorerestaurantRequest;
 use App\Http\Requests\UpdaterestaurantRequest;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -17,13 +19,13 @@ class RestaurantController extends Controller
      */
 
 
-     public function index()
-     {
-         $user = auth()->user();
-         $types = Type::all();
- 
-         return view("admin.restaurants.index", compact("user", "types"));
-     }
+    public function index()
+    {
+        $user = auth()->user();
+        $types = Type::all();
+
+        return view("admin.restaurants.index", compact("user", "types"));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -32,9 +34,9 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        $user = auth()->user();
+        $user_id = Auth::id();
         $types = Type::all();
-        return view("admin.restaurants.create", compact("user","types"));
+        return view("admin.restaurants.create", compact("user_id", "types"));
     }
 
     /**
@@ -45,14 +47,15 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        
+
 
         $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
 
-        $newRestaurant = new Restaurant();    
+        $newRestaurant = new Restaurant();
         $newRestaurant->fill($data);
         $newRestaurant->save();
-        
+
         if ($request->types) {
             $newRestaurant->types()->attach($request->types);
         }
@@ -70,7 +73,7 @@ class RestaurantController extends Controller
     {
         $user = auth()->user();
         $types = Type::all();
-        return view("admin.restaurants.show", compact("user","restaurant", "types"));
+        return view("admin.restaurants.show", compact("user", "restaurant", "types"));
     }
 
     /**
@@ -83,7 +86,7 @@ class RestaurantController extends Controller
     {
         $user = auth()->user();
         $types = Type::all();
-        return view("admin.restaurants.edit", compact("user","restaurant", "types"));
+        return view("admin.restaurants.edit", compact("user", "restaurant", "types"));
     }
 
     /**
