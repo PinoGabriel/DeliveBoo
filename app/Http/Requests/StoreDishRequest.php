@@ -28,7 +28,7 @@ class StoreDishRequest extends FormRequest
             "description" => "",
             "price" => ["required", "numeric"],
             "img" => ["required"],
-            "visibility" => ["required", "boolean"],
+            "visibility" => "",
         ];
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\DishController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 /*
@@ -25,6 +26,7 @@ Route::middleware(['auth'])
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('restaurants', RestaurantController::class);
+    Route::resource('dishes', DishController::class);
 
 });
 

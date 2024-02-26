@@ -7,6 +7,8 @@ use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 
 class DishController extends Controller
 {
@@ -31,7 +33,7 @@ class DishController extends Controller
     public function create()
     {
         $user = User::find(Auth::id());
-        return view("admin.dishes.create", compact('user')));
+        return view("admin.dishes.create", compact('user'));
     }
 
     /**
@@ -44,15 +46,12 @@ class DishController extends Controller
     {
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
-
+        
         $newDish = new Dish();
         $newDish->fill($data);
+        $newDish->visibility = $request->has('visibility');
         $newDish->save();
-
-        if ($request->types) {
-            $newDish->types()->attach($request->types);
-        }
-
+    
         return redirect()->route("admin.dishes.show", $newDish->id);
     }
 
@@ -102,6 +101,8 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        $dish->delete();
+
+        return redirect()->route("admin.dishes.index");
     }
 }
