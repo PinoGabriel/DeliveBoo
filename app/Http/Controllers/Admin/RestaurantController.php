@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\restaurant;
+use App\Models\Restaurant;
+use App\Models\Type;
 use App\Http\Requests\StorerestaurantRequest;
 use App\Http\Requests\UpdaterestaurantRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 
 class RestaurantController extends Controller
 {
@@ -15,9 +15,14 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-        
+        $restaurants = Restaurant::all();
+        $types = Type::all();
+
+        return view("admin.restaurants.index", compact("restaurants", "types"));
     }
 
     /**
@@ -27,62 +32,84 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all();
+        return view("admin.restaurants.create", compact("types"));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorerestaurantRequest  $request
+     * @param  \App\Http\Requests\StoreRestaurantRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorerestaurantRequest $request)
+    public function store(StoreRestaurantRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $newRestaurant = new Restaurant();    
+        $newRestaurant->fill($data);
+        $newRestaurant->save();
+        
+        if ($request->types) {
+            $newRestaurant->types()->attach($request->types);
+        }
+
+        return redirect()->route("admin.restaurants.show", $newRestaurant->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\restaurant  $restaurant
+     * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show(restaurant $restaurant)
+    public function show(Restaurant $restaurant)
     {
-        //
+        $types = Type::all();
+        return view("admin.restaurants.show", compact("restaurant", "types"));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\restaurant  $restaurant
+     * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function edit(restaurant $restaurant)
+    public function edit(Restaurant $restaurant)
     {
-        //
+        $types = Type::all();
+        return view("admin.restaurants.edit", compact("restaurant", "types"));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdaterestaurantRequest  $request
-     * @param  \App\Models\restaurant  $restaurant
+     * @param  \App\Http\Requests\UpdateRestaurantRequest  $request
+     * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdaterestaurantRequest $request, restaurant $restaurant)
+    public function update(UpdaterestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        $data = $request->validated();
+        $restaurant->update($data);
+        if ($request->filled("types")) {
+            $data["types"] = array_filter($data["types"]) ? $data["types"] : [];
+            $restaurant->types()->sync($data["types"]);
+        }
+
+        return redirect()->route("admin.restaurants.show", $restaurant->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\restaurant  $restaurant
+     * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(restaurant $restaurant)
+    public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+
+        return redirect()->route("admin.restaurants.index");
     }
 }
