@@ -62,7 +62,7 @@
                     <div class="col-12 col-md-6">
                         <label for="img" class="form-label">Immagine*</label>
                         <input type="file" class="form-control @error('img') is-invalid @enderror" id="img"
-                            name="img" value="{{ old('img', $restaurant->img) }}" required>
+                            name="img">
                         @error('img')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -91,15 +91,4 @@
         <a href="{{ route('admin.restaurants.index') }}" class="btn btn-warning">Torna alla lista dei ristoranti</a>
     </div>
     </div>
-
-    <style scoped>
-        .map {
-            /* width: 500px; */
-            height: 500px !important;
-        }
-    </style>
-
-    <script>
-        Geocoder::getCoordinatesForAddress('Samberstraat 69, Antwerpen, Belgium');
-    </script>
 @endsection
