@@ -102,17 +102,4 @@ class RestaurantController extends Controller
         $restaurant->update($request->all());
         return redirect()->route("admin.restaurants.show", $restaurant->id);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Restaurant $restaurant)
-    {
-        $restaurant->delete();
-
-        return redirect()->route("admin.restaurants.index");
-    }
 }

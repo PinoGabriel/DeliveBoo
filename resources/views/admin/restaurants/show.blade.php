@@ -24,12 +24,7 @@
                         <div class="d-flex justify-content-center">
                             <a href="{{ route('admin.restaurants.edit', $user->restaurant->id) }}"
                                 class="btn btn-info mx-2 mb-2">Edit</a>
-                            <form action="{{ route('admin.restaurants.destroy', $user->restaurant->id) }}" method="POST"
-                                class="d-inline-block mx-2 mb-2">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" value="Delete" class="btn btn-danger">
-                            </form>
+
                         </div>
                     </div>
                 </div>
