@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Dish extends Model
 {
@@ -15,6 +16,8 @@ class Dish extends Model
         'img',
         'visibility'
     ];
+
+    use SoftDeletes;
 
     public function restaurant()
     {

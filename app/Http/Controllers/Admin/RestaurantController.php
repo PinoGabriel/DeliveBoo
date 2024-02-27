@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Dish;
 use App\Models\Restaurant;
 use App\Models\Type;
 use App\Http\Requests\StorerestaurantRequest;
@@ -111,6 +112,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+        Dish::where('restaurant_id', $restaurant->id)->delete();
         $restaurant->delete();
 
         return redirect()->route("admin.restaurants.index");
