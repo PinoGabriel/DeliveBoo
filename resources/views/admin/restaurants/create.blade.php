@@ -77,39 +77,3 @@
     </div>
     </div>
 @endsection
-
-
-{{-- <!DOCTYPE html>
-<html>
-<head>
-    <title>La Tua Pagina</title>
-</head>
-<body>
-
-    <header>
-        <h1>La Tua Pagina</h1>
-    </header>
-
-    <div>
-        @auth
-            @if (Auth::user()->ristorante)
-                <!-- Contenuti visibili solo agli utenti autenticati con un ristorante -->
-                <p>Non hai accesso a questa pagina perché hai già un ristorante associato.</p>
-            @else
-                <!-- Contenuti visibili solo agli utenti autenticati senza un ristorante -->
-                <p>Benvenuto! Puoi accedere a questa pagina perché non hai ancora un ristorante associato.</p>
-                <!-- Altri contenuti per utenti autenticati senza un ristorante -->
-            @endif
-        @else
-            <!-- Contenuti visibili solo agli utenti non autenticati -->
-            <p>Questa pagina è disponibile solo per utenti autenticati. Effettua il login per accedere.</p>
-            <!-- Altri contenuti per utenti non autenticati -->
-        @endauth
-    </div>
-
-    <footer>
-        <p>Il tuo piè di pagina</p>
-    </footer>
-
-</body>
-</html> --}}
