@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
 
 class UpdaterestaurantRequest extends FormRequest
 {
@@ -28,7 +29,7 @@ class UpdaterestaurantRequest extends FormRequest
             "description" => "",
             "address" => ["required", "min:10"],
             "p_iva" => ["required", "min:11", "max:11"],
-            "img" => ["required"],
+            "img" => [File::image()->max(2048)],
         ];
     }
 }
