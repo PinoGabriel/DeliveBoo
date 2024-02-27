@@ -101,10 +101,14 @@ class RestaurantController extends Controller
      */
     public function update(UpdaterestaurantRequest $request, Restaurant $restaurant)
     {
-        Storage::disk('public')->delete($restaurant->img);
         $data = $request->all();
-        $path = Storage::disk('public')->put('uploads/restaurants', $request['img']);
-        $data['img'] = $path;
+        if ($request['img']) {
+            Storage::disk('public')->delete($restaurant->img);
+            $path = Storage::disk('public')->put('uploads/restaurants', $request['img']);
+            $data['img'] = $path;
+        } else {
+            $data['img'] = $restaurant->img;
+        }
         $restaurant->types()->sync($request->types);
         $restaurant->update($data);
         return redirect()->route("admin.restaurants.show", $restaurant->id);
