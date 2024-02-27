@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Restaurant;
 use App\Models\User;
 use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
@@ -21,9 +22,8 @@ class DishController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $dishes = Dish::all();
 
-        return view("admin.dishes.index", compact("user", "dishes"));
+        return view("admin.dishes.index", compact("user"));
     }
 
     /**
