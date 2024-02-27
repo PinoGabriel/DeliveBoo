@@ -71,7 +71,8 @@
                 @foreach ($types as $type)
                     <div class="form-check form-check-inline w-25">
                         <input class="form-check-input @error('types') is-invalid @enderror" type="checkbox" name="types[]"
-                            id="type{{ $type->id }}" value="{{ $type->id }}">
+                            id="type{{ $type->id }}" value="{{ $type->id }}"
+                            {{ in_array($type->id, old('types', [])) ? 'checked' : '' }}>
 
                         <label class="form-check-label" for="type{{ $type->id }}">
                             {{ $type->name }}
@@ -87,4 +88,6 @@
         <a href="{{ route('admin.restaurants.index') }}" class="btn btn-warning">Torna alla lista dei ristoranti</a>
     </div>
     </div>
+
+
 @endsection
