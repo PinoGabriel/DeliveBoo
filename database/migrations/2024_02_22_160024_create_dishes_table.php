@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->decimal('price', 5,2);
             $table->tinyText('img') ->nullable();
             $table->boolean("visibility")->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

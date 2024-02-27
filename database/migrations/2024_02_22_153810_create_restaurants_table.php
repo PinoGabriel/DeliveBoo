@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('address');
             $table->string('p_iva', 11);
             $table->tinyText('img');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
