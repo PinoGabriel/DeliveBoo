@@ -10,6 +10,7 @@ use App\Http\Requests\UpdaterestaurantRequest;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -49,9 +50,11 @@ class RestaurantController extends Controller
     public function store(StoreRestaurantRequest $request)
     {
 
+        $path = Storage::disk('public')->put('uploads/restaurants', $request['img']);
 
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
+        $data['img'] = $path;
 
         $newRestaurant = new Restaurant();
         $newRestaurant->fill($data);
@@ -99,8 +102,16 @@ class RestaurantController extends Controller
      */
     public function update(UpdaterestaurantRequest $request, Restaurant $restaurant)
     {
+        $data = $request->all();
+        if ($request['img']) {
+            Storage::disk('public')->delete($restaurant->img);
+            $path = Storage::disk('public')->put('uploads/restaurants', $request['img']);
+            $data['img'] = $path;
+        } else {
+            $data['img'] = $restaurant->img;
+        }
         $restaurant->types()->sync($request->types);
-        $restaurant->update($request->all());
+        $restaurant->update($data);
         return redirect()->route("admin.restaurants.show", $restaurant->id);
     }
 
@@ -112,6 +123,8 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+        Storage::disk('public')->delete($restaurant->img);
+
         Dish::where('restaurant_id', $restaurant->id)->delete();
         $restaurant->delete();
 

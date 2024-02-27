@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
 
 class StoreDishRequest extends FormRequest
 {
@@ -27,7 +28,7 @@ class StoreDishRequest extends FormRequest
             "name" => ["required", "min:5", "max:100"],
             "description" => "",
             "price" => ["required", "numeric"],
-            "img" => ["required"],
+            "img" => ["required", File::image()->max(2048)],
             "visibility" => "",
         ];
     }

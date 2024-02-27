@@ -6,10 +6,13 @@
             @if ($user->restaurant)
                 <div class="col-md-4">
                     <div class="card">
+                        <div><img src="{{ asset('storage/' . $restaurant->img) ?? $restaurant->img }}" class="card-img-top">
+                        </div>
                         <div class="card-header">{{ $user->restaurant->name }}</div>
                         <div class="card-body">{{ $user->restaurant->description }}</div>
                         <div class="card-body"><span class="fw-bold">Partita Iva:</span> {{ $user->restaurant->p_iva }}</div>
-                        <div class="card-body"><span class="fw-bold">Indirizzo:</span> {{ $user->restaurant->address }}</div>
+                        <div class="card-body"><span class="fw-bold">Indirizzo:</span> {{ $user->restaurant->address }}
+                        </div>
                         <div class="card-subtitle mb-2 text-muted pt-2">
                             @if (count($user->restaurant->types) > 0)
                                 <ul>

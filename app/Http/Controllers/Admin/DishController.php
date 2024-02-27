@@ -8,6 +8,7 @@ use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class DishController extends Controller
@@ -45,13 +46,15 @@ class DishController extends Controller
     public function store(StoreDishRequest $request)
     {
         $data = $request->all();
+        $path = Storage::disk('public')->put('uploads/dishes', $request['img']);
+        $data['img'] = $path;
         $data['user_id'] = auth()->user()->id;
-        
+
         $newDish = new Dish();
         $newDish->fill($data);
         $newDish->visibility = $request->has('visibility');
         $newDish->save();
-    
+
         return redirect()->route("admin.dishes.show", $newDish->id);
     }
 
@@ -88,8 +91,14 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-        $dish->types()->sync($request->types);
-        $dish->update($request->all());
+        $data = $request->all();
+        if ($request['img']) {
+            Storage::disk('public')->delete($dish->img);
+            $path = Storage::disk('public')->put('uploads/dishes', $request['img']);
+            $data['img'] = $path;
+        }
+        $dish->visibility = $request->has('visibility');
+        $dish->update($data);
         return redirect()->route("admin.dishes.show", $dish->id);
     }
 
@@ -101,6 +110,8 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+        Storage::disk('public')->delete($dish->img);
+
         $dish->delete();
 
         return redirect()->route("admin.dishes.index");

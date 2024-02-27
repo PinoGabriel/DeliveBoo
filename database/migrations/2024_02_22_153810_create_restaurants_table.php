@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger("user_id")->nullable();
             $table->foreign("user_id")->references("id")->on("users")->nullOnDelete();
             $table->string('name', 100);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->text('address');
             $table->string('p_iva', 11);
             $table->tinyText('img');
