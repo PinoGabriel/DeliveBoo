@@ -29,6 +29,7 @@ class StorerestaurantRequest extends FormRequest
             "address" => ["required", "min:10"],
             "p_iva" => ["required", "min:11", "max:11"],
             "img" => ["required"],
+            "types" => ["required|array|min:1"],
         ];
     }
 }

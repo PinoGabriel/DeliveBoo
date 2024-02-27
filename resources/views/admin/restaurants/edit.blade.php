@@ -62,14 +62,18 @@
         </div>
         <div class="mb-3">
             <label for="type" class="form-label">Tipi:</label>
-            <select multiple name="types[]" id="" class="form-select">
+            <select multiple name="types[]" id="type" class="form-select">
                 @foreach ($types as $type)
                     <option
-                        {{ in_array($type->id, old('type', $restaurant->types->pluck('id')->toArray())) ? 'selected' : '' }}
+                        {{ in_array($type->id, old('types', $restaurant->types->pluck('id')->toArray())) ? 'selected' : '' }}
                         value="{{ $type->id }}">{{ $type->name }}</option>
                 @endforeach
             </select>
+            @error('types')
+                <div class="invalid-feedback" style="display: block;">{{ $message }}</div>
+            @enderror
         </div>
+
 
         <button type="submit" class="btn btn-primary">Modifica</button>
         </form>
