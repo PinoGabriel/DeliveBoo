@@ -2,10 +2,6 @@
 
 @section('content')
     <div class="container">
-        @auth
-            @if (Auth::user()->restaurant)
-                <p>Non hai accesso a questa pagina perché hai già un ristorante associato.</p>
-            @else
                 <div class="row">
                     <h2>Nuovo Ristorante:</h2>
                     @if ($errors->any())
@@ -122,10 +118,6 @@
         <button type="submit" class="btn btn-primary">Aggiungi</button>
         </form>
         <a href="{{ route('admin.restaurants.index') }}" class="btn btn-warning">Torna alla lista dei ristoranti</a>
-        @endif
-    @else
-        <p>Questa pagina è disponibile solo per utenti autenticati. Effettua il login per accedere.</p>
-    @endauth
     </div>
     </div>
 @endsection

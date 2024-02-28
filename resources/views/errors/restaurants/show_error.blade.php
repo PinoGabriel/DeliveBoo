@@ -1,5 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-    <P></P>
+    <P>Non puoi accedere a questo ristorante</P>
 @endsection

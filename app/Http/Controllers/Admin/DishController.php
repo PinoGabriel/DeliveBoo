@@ -35,7 +35,6 @@ class DishController extends Controller
      */
     public function create()
     {
-        $types=Type::all();
         $user = User::find(Auth::id());
         if (!$user->restaurant){
             return view('errors.dishes.create_error');
@@ -90,7 +89,7 @@ class DishController extends Controller
     public function edit(Dish $dish)
     {
         $user = auth()->user();
-        if (!$user->restaurant){
+        if (!$user->restaurant || $dish->restaurant->user_id != $user->id) {
             return view('errors.dishes.edit_error');
         }else return view("admin.dishes.edit", compact("user", "dish"));
     }
