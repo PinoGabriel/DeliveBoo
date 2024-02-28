@@ -23,8 +23,9 @@ class DishController extends Controller
     public function index()
     {
         $user = auth()->user();
-
-        return view("admin.dishes.index", compact("user"));
+        if (!$user->restaurant){
+            return view('errors.dishes.index_error');
+        }else return view("admin.dishes.index", compact("user"));
     }
 
     /**
@@ -37,9 +38,8 @@ class DishController extends Controller
         $types=Type::all();
         $user = User::find(Auth::id());
         if (!$user->restaurant){
-            return view('errors.dish_error');
-        }
-        return view("admin.dishes.create", compact('user'));
+            return view('errors.dishes.create_error');
+        }else return view("admin.dishes.create", compact('user'));
     }
 
     /**
@@ -74,6 +74,10 @@ class DishController extends Controller
     public function show(Dish $dish)
     {
         $user = auth()->user();
+        if ($dish->restaurant->user_id !== $user->id) {
+
+            return view('errors.dishes.show_error');
+        }
         return view("admin.dishes.show", compact("user", "dish"));
     }
 
@@ -86,7 +90,9 @@ class DishController extends Controller
     public function edit(Dish $dish)
     {
         $user = auth()->user();
-        return view("admin.dishes.edit", compact("user", "dish"));
+        if (!$user->restaurant){
+            return view('errors.dishes.edit_error');
+        }else return view("admin.dishes.edit", compact("user", "dish"));
     }
 
     /**
