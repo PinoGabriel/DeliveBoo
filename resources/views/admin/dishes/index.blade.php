@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid mt-4">
         <div class="row">
-            @foreach ($dishes as $dish)
+            @foreach ($user->restaurant->dishes as $dish)
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <img src="{{ $dish->img ? asset($dish->img) : 'https://via.placeholder.com/150' }}"

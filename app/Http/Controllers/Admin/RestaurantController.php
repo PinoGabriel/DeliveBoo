@@ -24,8 +24,12 @@ class RestaurantController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $types = Type::all();
 
+        if (!$user->restaurant) {
+            return view('errors.restaurants.index_error');
+        }
+
+        $types = Type::all();
         return view("admin.restaurants.index", compact("user", "types"));
     }
 
@@ -37,6 +41,9 @@ class RestaurantController extends Controller
     public function create()
     {
         $user = User::find(Auth::id());
+        if ($user->restaurant) {
+            return view('errors.restaurants.create_error');
+        }
         $types = Type::all();
         return view("admin.restaurants.create", compact("types", 'user'));
     }
@@ -76,6 +83,9 @@ class RestaurantController extends Controller
     public function show(Restaurant $restaurant)
     {
         $user = auth()->user();
+        if (!$user->restaurant || $restaurant->user_id != $user->id) {
+            return view('errors.restaurants.show_error');
+        }
         $types = Type::all();
         return view("admin.restaurants.show", compact("user", "restaurant", "types"));
     }
@@ -89,6 +99,9 @@ class RestaurantController extends Controller
     public function edit(Restaurant $restaurant)
     {
         $user = auth()->user();
+        if (!$user->restaurant || $restaurant->user_id != $user->id) {
+            return view('errors.restaurants.edit_error');
+        }
         $types = Type::all();
         return view("admin.restaurants.edit", compact("user", "restaurant", "types"));
     }
