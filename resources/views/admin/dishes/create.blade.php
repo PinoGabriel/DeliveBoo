@@ -74,8 +74,10 @@
                 <div class="my-3">* campi obbligatori</div>
                 {{-- submit button --}}
                 <button type="submit" class="btn btn-primary">Aggiungi</button>
+                <a href="{{ route('admin.restaurants.show', $user->restaurant->id) }}" class="btn btn-warning">Torna alla
+                    lista dei
+                    ristoranti</a>
             </form>
-            <a href="{{ route('admin.dishes.index') }}" class="btn btn-warning">Torna alla lista dei ristoranti</a>
         </div>
     </div>
 @endsection
