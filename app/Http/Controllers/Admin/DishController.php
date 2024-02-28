@@ -9,6 +9,7 @@ use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,9 +24,9 @@ class DishController extends Controller
     public function index()
     {
         $user = auth()->user();
-        if (!$user->restaurant){
-            return view('errors.dishes.index_error');
-        }else return view("admin.dishes.index", compact("user"));
+        if (!$user->restaurant) {
+            return Response::view('errors.dishes.index_error');
+        } else return Response::view("admin.dishes.index", compact("user"));
     }
 
     /**
@@ -36,9 +37,9 @@ class DishController extends Controller
     public function create()
     {
         $user = User::find(Auth::id());
-        if (!$user->restaurant){
-            return view('errors.dishes.create_error');
-        }else return view("admin.dishes.create", compact('user'));
+        if (!$user->restaurant) {
+            return Response::view('errors.dishes.create_error');
+        } else return Response::view("admin.dishes.create", compact('user'));
     }
 
     /**
@@ -75,9 +76,9 @@ class DishController extends Controller
         $user = auth()->user();
         if ($dish->restaurant->user_id !== $user->id) {
 
-            return view('errors.dishes.show_error');
+            return Response::view('errors.dishes.show_error');
         }
-        return view("admin.dishes.show", compact("user", "dish"));
+        return Response::view("admin.dishes.show", compact("user", "dish"));
     }
 
     /**
@@ -90,8 +91,8 @@ class DishController extends Controller
     {
         $user = auth()->user();
         if (!$user->restaurant || $dish->restaurant->user_id != $user->id) {
-            return view('errors.dishes.edit_error');
-        }else return view("admin.dishes.edit", compact("user", "dish"));
+            return Response::view('errors.dishes.edit_error');
+        } else return Response::view("admin.dishes.edit", compact("user", "dish"));
     }
 
     /**

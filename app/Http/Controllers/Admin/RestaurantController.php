@@ -9,6 +9,7 @@ use App\Http\Requests\StorerestaurantRequest;
 use App\Http\Requests\UpdaterestaurantRequest;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,11 +27,11 @@ class RestaurantController extends Controller
         $user = auth()->user();
 
         if (!$user->restaurant) {
-            return view('errors.restaurants.index_error');
+            return Response::view('errors.restaurants.index_error');
         }
 
         $types = Type::all();
-        return view("admin.restaurants.index", compact("user", "types"));
+        return Response::view("admin.restaurants.index", compact("user", "types"));
     }
 
     /**
@@ -42,10 +43,10 @@ class RestaurantController extends Controller
     {
         $user = User::find(Auth::id());
         if ($user->restaurant) {
-            return view('errors.restaurants.create_error');
+            return Response::view('errors.restaurants.create_error');
         }
         $types = Type::all();
-        return view("admin.restaurants.create", compact("types", 'user'));
+        return Response::view("admin.restaurants.create", compact("types", 'user'));
     }
 
     /**
@@ -84,10 +85,10 @@ class RestaurantController extends Controller
     {
         $user = auth()->user();
         if (!$user->restaurant || $restaurant->user_id != $user->id) {
-            return view('errors.restaurants.show_error');
+            return Response::view('errors.restaurants.show_error');
         }
         $types = Type::all();
-        return view("admin.restaurants.show", compact("user", "restaurant", "types"));
+        return Response::view("admin.restaurants.show", compact("user", "restaurant", "types"));
     }
 
     /**
@@ -100,10 +101,10 @@ class RestaurantController extends Controller
     {
         $user = auth()->user();
         if (!$user->restaurant || $restaurant->user_id != $user->id) {
-            return view('errors.restaurants.edit_error');
+            return Response::view('errors.restaurants.edit_error');
         }
         $types = Type::all();
-        return view("admin.restaurants.edit", compact("user", "restaurant", "types"));
+        return Response::view("admin.restaurants.edit", compact("user", "restaurant", "types"));
     }
 
     /**
