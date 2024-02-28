@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Restaurant;
+use App\Models\Type;
 use App\Models\User;
 use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
@@ -33,7 +34,11 @@ class DishController extends Controller
      */
     public function create()
     {
+        $types=Type::all();
         $user = User::find(Auth::id());
+        if (!$user->restaurant){
+            return view('errors.dish_error');
+        }
         return view("admin.dishes.create", compact('user'));
     }
 
@@ -45,10 +50,12 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
+        $user = auth()->user();
         $data = $request->all();
         $path = Storage::disk('public')->put('uploads/dishes', $request['img']);
         $data['img'] = $path;
-        $data['user_id'] = auth()->user()->id;
+        $data['user_id'] = $user->id;
+        $data['restaurant_id'] = $user->restaurant->id;
 
         $newDish = new Dish();
         $newDish->fill($data);

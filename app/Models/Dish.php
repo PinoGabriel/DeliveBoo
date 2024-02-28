@@ -14,7 +14,8 @@ class Dish extends Model
         'description',
         'price',
         'img',
-        'visibility'
+        'visibility',
+        'restaurant_id'
     ];
 
     use SoftDeletes;

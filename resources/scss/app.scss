@@ -1,1 +1,20 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    background: rgb(124, 227, 254);
+    background: radial-gradient(circle, rgba(124, 227, 254, 1) 0%, rgba(4, 128, 133, 1) 100%);
+}
+
+.card,
+.modal-content {
+    background-color: #212529 !important;
+    color: white !important;
+}
+
+.card>* {
+    color: white !important;
+}
+
+.card hr {
+    border-color: white !important;
+}
