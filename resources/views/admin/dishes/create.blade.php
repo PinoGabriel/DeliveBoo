@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container card my-4 py-2">
         <div class="row">
             <h2>Nuovo Piatto:</h2>
 
@@ -72,11 +72,12 @@
                 </div>
 
                 <div class="my-3">* campi obbligatori</div>
-                {{-- submit button --}}
-                <button type="submit" class="btn btn-primary">Aggiungi</button>
-                <a href="{{ route('admin.restaurants.show', $user->restaurant->id) }}" class="btn btn-warning">Torna alla
-                    lista dei
-                    ristoranti</a>
+                <div class="d-flex gap-3 mb-1">
+                    {{-- submit button --}}
+                    <button type="submit" class="btn btn-primary">Aggiungi</button>
+                    <a href="{{ route('admin.restaurants.show', $user->restaurant->id) }}"
+                        class="btn btn-secondary">Annulla</a>
+                </div>
             </form>
         </div>
     </div>
