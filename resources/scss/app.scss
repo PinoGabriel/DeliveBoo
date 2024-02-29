@@ -1,15 +1,46 @@
-
 @import '~bootstrap/scss/bootstrap';
+
+* {
+    font-family: 'roboto';
+}
 
 body {
     background: rgb(124, 227, 254);
     background: radial-gradient(circle, rgba(124, 227, 254, 1) 0%, rgba(4, 128, 133, 1) 100%);
 }
 
+.navbar-brand>svg {
+    width: 60px;
+    margin-right: 12px;
+}
+
+.navbar-brand>p.logo {
+    font-size: 2rem;
+    font-family: 'roboto';
+    font-weight: 800;
+    color: #9df2e9;
+}
+
+.navbar-brand>span {
+    font-size: 1.5rem;
+    font-family: 'impact';
+    font-style: italic;
+    color: #81d5cd;
+    position: relative;
+    top: 0.3rem;
+}
+
 .card,
-.modal-content {
-    background-color: #212529 !important;
+.modal-content,
+.glass {
+    background: rgba(0, 0, 0, 0.63);
+    border-radius: 16px;
+    border: 0px !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.2px);
+    -webkit-backdrop-filter: blur(15.2px);
     color: white !important;
+    overflow: hidden;
 }
 
 .card>* {
@@ -20,3 +51,34 @@ body {
     border-color: white !important;
 }
 
+.btn {
+    /* From https://css.glass */
+    border-radius: 16px !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(15.2px) !important;
+    -webkit-backdrop-filter: blur(15.2px) !important;
+}
+
+.card-img-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.card-img-top>img {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.logo-deliveboo>svg {
+    width: 200px;
+}
+
+.wave-first {
+    fill: rgba(0, 0, 0, 0.606) !important;
+    border: 0px !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.2px);
+    -webkit-backdrop-filter: blur(15.2px);
+}
