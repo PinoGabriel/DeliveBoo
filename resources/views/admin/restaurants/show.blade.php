@@ -7,7 +7,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div><img
-                                src="{{ substr($restaurant->img, 0, 6) == 'upload' ? asset('/storage/' . $restaurant->img) : $restaurant->img }}"
+                                src="{{ substr($restaurant->img, 0, 6) == 'upload' ? asset('/storage' . $restaurant->img) : $restaurant->img }}"
                                 class="card-img-top">
                         </div>
                         <div class="card-header">{{ $user->restaurant->name }}</div>
