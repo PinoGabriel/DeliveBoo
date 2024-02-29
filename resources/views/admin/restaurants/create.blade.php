@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container card my-4 py-2">
         <div class="row">
             <h2>Nuovo Ristorante:</h2>
             @if ($errors->any())
@@ -78,9 +78,12 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Aggiungi</button>
+        <div class="d-flex gap-3 mb-1">
+            <button type="submit" class="btn btn-primary">Aggiungi</button>
+            <a href="{{ route('admin.restaurants.create') }}"
+                class="btn btn-secondary @if (!$user->restaurant) disabled @endif">Annulla</a>
+        </div>
         </form>
-        <a href="{{ route('admin.restaurants.index') }}" class="btn btn-warning">Torna alla lista dei ristoranti</a>
     </div>
     </div>
 @endsection
