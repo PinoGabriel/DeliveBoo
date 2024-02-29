@@ -1,3 +1,9 @@
+@php
+    $user = auth()->user();
+    $hasRestaurant = $user->restaurant !== null;
+@endphp
+
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -45,19 +51,23 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item d-none">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.create' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.restaurants.create') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Aggiungi un ristorante
-                                </a>
-                            </li>
+                            @if (!$hasRestaurant)
+                                <li class="nav-item">
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.create' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.restaurants.create') }}">
+                                        <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Aggiungi un ristorante
+                                    </a>
+                                </li>
+                            @endif
 
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dishes.create' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.dishes.create') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Aggiungi un piatto
-                                </a>
-                            </li>
+                            @if ($hasRestaurant)
+                                <li class="nav-item">
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dishes.create' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.dishes.create') }}">
+                                        <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Aggiungi un piatto
+                                    </a>
+                                </li>
+                            @endif
 
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('logout') }}"
