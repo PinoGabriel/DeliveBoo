@@ -45,8 +45,8 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ str_contains(Route::currentRouteName() , 'admin.restaurants' )? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.restaurants.show' , $user->restaurant) }}">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.show' ? 'bg-secondary' : '' }}"
+                                    href="{{ $user->restaurant ? route('admin.restaurants.show', $user->restaurant) : route('admin.restaurants.create') }}">
                                     <i class="fa-solid fas fa-building fa-lg fa-fw"></i> Ristorante
                                 </a>
                             </li>
