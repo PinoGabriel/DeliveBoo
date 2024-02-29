@@ -39,16 +39,9 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.dashboard') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.restaurants.index') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Restaurants List
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
                             </li>
 
@@ -56,6 +49,13 @@
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.create' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.restaurants.create') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Aggiungi un ristorante
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dishes.create' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.dishes.create') }}">
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Aggiungi un piatto
                                 </a>
                             </li>
 

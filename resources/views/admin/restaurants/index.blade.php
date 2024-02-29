@@ -23,6 +23,9 @@
                             <a href="{{ route('admin.restaurants.show', $user->restaurant->id) }}"
                                 class="btn btn-primary mx-2 mb-2">Show
                                 details</a>
+                                <a href="{{ route('admin.dishes.index', $user->restaurant->id) }}"
+                                    class="btn btn-primary mx-2 mb-2">Show
+                                    menu</a>
                             <a href="{{ route('admin.restaurants.edit', $user->restaurant->id) }}"
                                 class="btn btn-info mx-2 mb-2">Edit</a>
                             <form action="{{ route('admin.restaurants.destroy', $user->restaurant->id) }}" method="POST"
