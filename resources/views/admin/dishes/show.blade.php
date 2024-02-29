@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="{{ $dish->img ? asset($dish->img) : 'https://via.placeholder.com/150' }}"
+                        <img src="{{ substr($dish->img, 0, 6) == 'upload' ? asset('/storage' . $dish->img) : $dish->img }}"
                             class="card-img-top" alt="{{ $dish->name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $dish->name }}</h5>
