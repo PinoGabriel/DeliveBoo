@@ -24,9 +24,11 @@ class DishController extends Controller
     public function index()
     {
         $user = auth()->user();
-        if (!$user->restaurant) {
+        if ($user->restaurant->dishes->isEmpty()) {
             return view('errors.dishes.index_error');
-        } else return view("admin.dishes.index", compact("user"));
+        } else {
+            return view("admin.dishes.index", compact("user"));
+        }
     }
 
     /**
@@ -71,10 +73,11 @@ class DishController extends Controller
      * @param  \App\Models\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function show(Dish $dish)
+    public function show($id)
     {
         $user = auth()->user();
-        if ($dish->restaurant->user_id !== $user->id) {
+        $dish = Dish::find($id);
+        if (!$dish || $dish->restaurant->user_id !== $user->id) {
 
             return view('errors.dishes.show_error');
         }
@@ -87,12 +90,20 @@ class DishController extends Controller
      * @param  \App\Models\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dish $dish)
+    public function edit($id)
     {
         $user = auth()->user();
-        if (!$user->restaurant || $dish->restaurant->user_id != $user->id) {
+        $dish = Dish::find($id);
+        if (!$user->restaurant) {
             return view('errors.dishes.edit_error');
-        } else return view("admin.dishes.edit", compact("user", "dish"));
+        }
+
+        // Controllo se il piatto esiste oppure se l'utente ha il permesso di editare il piatto
+        if (!$dish || $dish->restaurant->user_id != $user->id) {
+            return view('errors.dishes.dish_not_found');
+        }
+
+        return view("admin.dishes.edit", compact("user", "dish"));
     }
 
     /**

@@ -81,10 +81,11 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
+    public function show($id)
     {
         $user = auth()->user();
-        if (!$user->restaurant || $restaurant->user_id != $user->id) {
+        $restaurant = Restaurant::find($id);
+        if (!$restaurant || !$user->restaurant || $restaurant->user_id != $user->id) {
             return view('errors.restaurants.show_error');
         }
         $types = Type::all();
@@ -97,11 +98,13 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Restaurant $restaurant)
+    public function edit($id)
     {
         $user = auth()->user();
-        if (!$user->restaurant || $restaurant->user_id != $user->id) {
-            return view('errors.restaurants.edit_error');
+        $restaurant = Restaurant::find($id);
+
+        if (!$restaurant || !$user->restaurant || $restaurant->user_id != $user->id) {
+            return view('errors.restaurants.edit_error', compact("user", "restaurant"));
         }
         $types = Type::all();
         return view("admin.restaurants.edit", compact("user", "restaurant", "types"));
