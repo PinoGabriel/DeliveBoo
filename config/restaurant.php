@@ -19,7 +19,7 @@ return [
         'name' => 'Sabor y Asador',
         'img' => 'https://lh5.googleusercontent.com/p/AF1QipNRte3wVcSlYh6wy9pIDKdXxzgIEJ3BOpKtRlvw',
         'description' => '
-        Benvenuti a Sabor y Asador, il paradiso del sapore messicano e delle prelibatezze di carne. Situato in Calle del Sazón nel cuore del Barrio del Fuego, il nostro ristorante offre un esplosione di sapori autentici dalla cucina messicana, accompagnata da selezioni di carne alla griglia irresistibili.',
+        Benvenuti a Sabor y Asador, pippo il paradiso del sapore messicano e delle prelibatezze di carne. Situato in Calle del Sazón nel cuore del Barrio del Fuego, il nostro ristorante offre un esplosione di sapori autentici dalla cucina messicana, accompagnata da selezioni di carne alla griglia irresistibili.',
         'address' => 'Via del Sapore, 55, Quartiere del Fuoco, 56789 Città del Sapore, Italia',
     ],
     [
