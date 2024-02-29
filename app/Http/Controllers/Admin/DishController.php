@@ -25,8 +25,8 @@ class DishController extends Controller
     {
         $user = auth()->user();
         if (!$user->restaurant) {
-            return Response::view('errors.dishes.index_error');
-        } else return Response::view("admin.dishes.index", compact("user"));
+            return view('errors.dishes.index_error');
+        } else return view("admin.dishes.index", compact("user"));
     }
 
     /**
@@ -38,8 +38,8 @@ class DishController extends Controller
     {
         $user = User::find(Auth::id());
         if (!$user->restaurant) {
-            return Response::view('errors.dishes.create_error');
-        } else return Response::view("admin.dishes.create", compact('user'));
+            return view('errors.dishes.create_error');
+        } else return view("admin.dishes.create", compact('user'));
     }
 
     /**
@@ -76,9 +76,9 @@ class DishController extends Controller
         $user = auth()->user();
         if ($dish->restaurant->user_id !== $user->id) {
 
-            return Response::view('errors.dishes.show_error');
+            return view('errors.dishes.show_error');
         }
-        return Response::view("admin.dishes.show", compact("user", "dish"));
+        return view("admin.dishes.show", compact("user", "dish"));
     }
 
     /**
@@ -91,8 +91,8 @@ class DishController extends Controller
     {
         $user = auth()->user();
         if (!$user->restaurant || $dish->restaurant->user_id != $user->id) {
-            return Response::view('errors.dishes.edit_error');
-        } else return Response::view("admin.dishes.edit", compact("user", "dish"));
+            return view('errors.dishes.edit_error');
+        } else return view("admin.dishes.edit", compact("user", "dish"));
     }
 
     /**

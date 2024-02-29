@@ -27,11 +27,11 @@ class RestaurantController extends Controller
         $user = auth()->user();
 
         if (!$user->restaurant) {
-            return Response::view('errors.restaurants.index_error');
+            return view('errors.restaurants.index_error');
         }
 
         $types = Type::all();
-        return Response::view("admin.restaurants.index", compact("user", "types"));
+        return view("admin.restaurants.index", compact("user", "types"));
     }
 
     /**
@@ -43,10 +43,10 @@ class RestaurantController extends Controller
     {
         $user = User::find(Auth::id());
         if ($user->restaurant) {
-            return Response::view('errors.restaurants.create_error');
+            return view('errors.restaurants.create_error');
         }
         $types = Type::all();
-        return Response::view("admin.restaurants.create", compact("types", 'user'));
+        return view("admin.restaurants.create", compact("types", 'user'));
     }
 
     /**
@@ -85,10 +85,10 @@ class RestaurantController extends Controller
     {
         $user = auth()->user();
         if (!$user->restaurant || $restaurant->user_id != $user->id) {
-            return Response::view('errors.restaurants.show_error');
+            return view('errors.restaurants.show_error');
         }
         $types = Type::all();
-        return Response::view("admin.restaurants.show", compact("user", "restaurant", "types"));
+        return view("admin.restaurants.show", compact("user", "restaurant", "types"));
     }
 
     /**
@@ -101,10 +101,10 @@ class RestaurantController extends Controller
     {
         $user = auth()->user();
         if (!$user->restaurant || $restaurant->user_id != $user->id) {
-            return Response::view('errors.restaurants.edit_error');
+            return view('errors.restaurants.edit_error');
         }
         $types = Type::all();
-        return Response::view("admin.restaurants.edit", compact("user", "restaurant", "types"));
+        return view("admin.restaurants.edit", compact("user", "restaurant", "types"));
     }
 
     /**
