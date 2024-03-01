@@ -8,16 +8,22 @@
 
                     <div class="card">
                         <div class="card-img-top overflow-hidden">
-                            <img src="{{ $dish->img ? asset($dish->img) : 'https://via.placeholder.com/150' }}" class="w-100"
-                                alt="{{ $dish->name }}">
+                            <img src="{{ substr($dish->img, 0, 6) == 'upload' ? asset('/storage' . '/' . $dish->img) : $dish->img }}"
+                                class="w-100" alt="{{ $dish->name }}">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-header mb-3">{{ $dish->name }}</h5>
+                            <div class="card-header mb-3 d-flex justify-content-between">
+                                <h5 class="card-title">{{ mb_strimwidth($dish->name, 0, 33, '...') }}</h5>
+                                @if ($dish->visibility)
+                                    <i class="fa-solid fa-eye"></i>
+                                @else
+                                    <i class="fa-solid fa-eye-slash"></i>
+                                @endif
+
+                            </div>
                             <ul class="fa-ul">
                                 <li><span class="fa-li"><i class="fa-solid fa-coins"></i></span>€{{ $dish->price }}
                                 </li>
-                                <li><span class="fa-li"><i class="fas fa-eye"></i></span>
-                                    {{ $dish->visibility ? 'Visible' : 'Not Visible' }}</li>
                             </ul>
 
                             <div class="buttons">

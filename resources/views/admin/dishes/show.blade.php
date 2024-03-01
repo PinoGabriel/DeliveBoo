@@ -14,9 +14,15 @@
                         <li class="my-3"><span class="fa-li"><i
                                     class="fa-solid fa-utensils"></i></span>{{ $user->restaurant->name }}
                         </li>
-                        <li class="my-3"><span class="fa-li"><i
-                                    class="fa-regular fa-eye"></i></span>{{ $dish->visibility ? 'Visible' : 'Not Visible' }}
-                        </li>
+                        @if ($dish->visibility)
+                            <li class="my-3"><span class="fa-li"><i class="fa-regular fa-eye"></i></span>Visibile nel
+                                menù
+                            </li>
+                        @else
+                            <li class="my-3"><span class="fa-li"><i class="fa-regular fa-eye-slash"></i></span>Non
+                                visibile nel menù
+                            </li>
+                        @endif
                         <li class="my-3"><span class="fa-li"><i class="fa-solid fa-user"></i></span>{{ $user->name }}
                         </li>
 

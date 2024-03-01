@@ -18,6 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
         $restaurantId = Auth::user()->restaurant->id;
 
         $orders = Order::with(['restaurant', 'dishes'])
@@ -26,9 +27,11 @@ class OrderController extends Controller
             })
             ->get();
 
-        return view('admin.orders.index', compact('orders'));
-
-
+        if ($orders->isEmpty()) {
+            return view('errors.orders.index_error', compact('user'));
+        } else {
+            return view('admin.orders.index', compact('orders'));
+        }
     }
 
     /**
@@ -60,11 +63,16 @@ class OrderController extends Controller
      */
     public function show($id)
     {
+        $user = auth()->user();
         $restaurantId = Auth::user()->restaurant->id;
 
         $order = Order::with(['restaurant', 'dishes'])
             ->where('restaurant_id', $restaurantId)
-            ->findOrFail($id);
+            ->find($id);
+
+        if (!$order || $order->restaurant->user_id !== $user->id) {
+            return view('errors.orders.show_error');
+        }
 
         return view('admin.orders.show', compact('order'));
     }
