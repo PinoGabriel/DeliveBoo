@@ -100,7 +100,7 @@ class DishController extends Controller
 
         // Controllo se il piatto esiste oppure se l'utente ha il permesso di editare il piatto
         if (!$dish || $dish->restaurant->user_id != $user->id) {
-            return view('errors.dishes.dish_not_found');
+            return view('errors.dishes.dish_not_found', compact("user", "dish"));
         }
 
         return view("admin.dishes.edit", compact("user", "dish"));

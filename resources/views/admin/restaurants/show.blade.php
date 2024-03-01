@@ -15,9 +15,6 @@
                                     class="fa-solid fa-location-dot"></i></span>{{ $restaurant->address }}
                         </li>
                         <li class="my-3"><span class="fa-li"><i
-                                    class="fa-regular fa-eye"></i></span>{{ $restaurant->visibility ? 'Visible' : 'Not Visible' }}
-                        </li>
-                        <li class="my-3"><span class="fa-li"><i
                                     class="fa-solid fa-user"></i></span>{{ $restaurant->user->name }}</li>
                         <li class="my-3"><span class="fa-li"><i class="fa-solid fa-utensils"></i></span>
                             @if (count($restaurant->types) > 0)

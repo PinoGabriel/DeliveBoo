@@ -42,8 +42,9 @@ class RestaurantController extends Controller
     public function create()
     {
         $user = User::find(Auth::id());
+        $restaurant = Restaurant::find(Auth::id());
         if ($user->restaurant) {
-            return view('errors.restaurants.create_error');
+            return view('errors.restaurants.create_error', compact('user', 'restaurant'));
         }
         $types = Type::all();
         return view("admin.restaurants.create", compact("types", 'user'));
@@ -86,7 +87,7 @@ class RestaurantController extends Controller
         $user = auth()->user();
         $restaurant = Restaurant::find($id);
         if (!$restaurant || !$user->restaurant || $restaurant->user_id != $user->id) {
-            return view('errors.restaurants.show_error');
+            return view('errors.restaurants.show_error', compact("user", "restaurant"));
         }
         $types = Type::all();
         return view("admin.restaurants.show", compact("user", "restaurant", "types"));
