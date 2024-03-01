@@ -17,7 +17,7 @@
                         <li class="my-3"><span class="fa-li"><i
                                     class="fa-regular fa-eye"></i></span>{{ $dish->visibility ? 'Visible' : 'Not Visible' }}
                         </li>
-                        <li class="my-3"><span class="fa-li"><i class="fa-solid fa-user"></i></span>{{ $dish->name }}
+                        <li class="my-3"><span class="fa-li"><i class="fa-solid fa-user"></i></span>{{ $user->name }}
                         </li>
 
                     </ul>
