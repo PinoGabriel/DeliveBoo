@@ -60,16 +60,6 @@
                                         <i class="fa-solid fas fa-building fa-lg fa-fw"></i> Ristorante
                                     </a>
                                 </li>
-
-                                <!-- Mostra il pulsante solo se c'è almeno un ordine per il ristorante -->
-                                @if (!$orders->isEmpty())
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
-                                            href="{{ route('admin.orders.index') }}">
-                                            <i class="fa-solid fa-clipboard-list fa-lg fa-fw"></i> Lista degli ordini
-                                        </a>
-                                    </li>
-                                @endif
                             @endif
 
                             @if (!$hasRestaurant)
@@ -86,6 +76,15 @@
                                     <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dishes.create' ? 'bg-secondary' : '' }}"
                                         href="{{ route('admin.dishes.create') }}">
                                         <i class="fa-solid fas fa-plate-wheat fa-lg fa-fw"></i> Aggiungi un piatto
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if (!$orders->isEmpty())
+                                <li class="nav-item">
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.orders.index') }}">
+                                        <i class="fa-solid fa-clipboard-list fa-lg fa-fw"></i> Lista degli ordini
                                     </a>
                                 </li>
                             @endif
