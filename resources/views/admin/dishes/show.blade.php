@@ -12,7 +12,7 @@
                     <h1>{{ $dish->name }}</h1>
                     <ul class="fa-ul">
                         <li class="my-3"><span class="fa-li"><i
-                                    class="fa-solid fa-location-dot"></i></span>{{ $dish->address }}
+                                    class="fa-solid fa-utensils"></i></span>{{ $user->restaurant->name }}
                         </li>
                         <li class="my-3"><span class="fa-li"><i
                                     class="fa-regular fa-eye"></i></span>{{ $dish->visibility ? 'Visible' : 'Not Visible' }}
