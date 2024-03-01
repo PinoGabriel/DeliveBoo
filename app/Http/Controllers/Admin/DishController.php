@@ -123,7 +123,7 @@ class DishController extends Controller
         }
         $dish->visibility = $request->has('visibility');
         $dish->update($data);
-        return redirect()->route("admin.dishes.index");
+        return redirect()->route("admin.dishes.show", $dish->id);
     }
 
     /**
