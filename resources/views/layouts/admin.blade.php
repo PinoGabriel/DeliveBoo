@@ -3,7 +3,6 @@
     $hasRestaurant = $user->restaurant !== null;
 @endphp
 
-
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -44,12 +43,25 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.show' ? 'bg-secondary' : '' }}"
-                                    href="{{ $user->restaurant ? route('admin.restaurants.show', $user->restaurant) : route('admin.restaurants.create') }}">
-                                    <i class="fa-solid fas fa-building fa-lg fa-fw"></i> Ristorante
-                                </a>
-                            </li>
+                            @if ($hasRestaurant)
+                                <!-- Mostra il pulsante solo se c'è un ristorante -->
+                                <li class="nav-item">
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.show' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.restaurants.show', $user->restaurant) }}">
+                                        <i class="fa-solid fas fa-building fa-lg fa-fw"></i> Ristorante
+                                    </a>
+                                </li>
+
+                                <!-- Mostra il pulsante solo se c'è almeno un ordine per il ristorante -->
+                                @if ($user->restaurant->orders->count() > 0)
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
+                                            href="{{ route('admin.orders.index') }}">
+                                            <i class="fa-solid fa-clipboard-list fa-lg fa-fw"></i> Lista degli ordini
+                                        </a>
+                                    </li>
+                                @endif
+                            @endif
 
                             @if (!$hasRestaurant)
                                 <li class="nav-item">
@@ -68,13 +80,6 @@
                                     </a>
                                 </li>
                             @endif
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.orders.index') }}">
-                                    <i class="fa-solid fa-clipboard-list fa-lg fa-fw"></i> Lista degli ordini
-                                </a>
-                            </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('logout') }}"
