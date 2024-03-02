@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="col total">
-                            <span id="{{ $order->id }}total"></span>
+                            <span id="{{ $order->id }}total">€ {{ number_format($order->total, 2) }}</span>
                         </div>
                     </div>
                 </div>
@@ -238,14 +238,15 @@
 
 
     <script>
-        orders.forEach(order => {
-            let total = 0;
-            order.dishes.forEach(dish => {
-                total += dish.price * dish.pivot.quantity;
-            });
+        // get total
+        // orders.forEach(order => {
+        //     let total = 0;
+        //     order.dishes.forEach(dish => {
+        //         total += dish.price * dish.pivot.quantity;
+        //     });
 
-            document.getElementById(order.id + 'total').innerHTML = "€ " + total.toFixed(2);
-        });
+        //     document.getElementById(order.id + 'total').innerHTML = "€ " + total.toFixed(2);
+        // });
 
         const orderRows = document.querySelectorAll('.order-btn')
         const tableIcons = document.querySelectorAll('.table-btn .table-icon');
