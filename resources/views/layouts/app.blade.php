@@ -26,8 +26,6 @@
         <nav class="navbar navbar-expand-md bg-dark navbar-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
                     <svg width="100%" height="100%" viewBox="0 0 1182 1182" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         xml:space="preserve" xmlns:serif="http://www.serif.com/"
@@ -99,6 +97,44 @@
         <main class="">
             @yield('content')
         </main>
+
+        <footer>
+            <div class="container">
+                <p class="text-center">Made with &hearts; by</p>
+                <div class="row gap-4 flex-column">
+                    <div class="col">
+                        <a class="github-profile" href="https://github.com/ChiaraRuggi">
+                            <img class="rounded-circle avatar" src="https://github.com/ChiaraRuggi.png"
+                                alt="Chiara Ruggi avatar">
+                            <span class="ms-3">Chiara Ruggi</span>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a class="github-profile" href="https://github.com/SassaroCristian">
+                            <img class="rounded-circle avatar" src="https://github.com/SassaroCristian.png"
+                                alt="Sassaro Cristian avatar">
+                            <span class="ms-3">Cristian Sassaro</span>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a class="github-profile" href="https://github.com/PinoGabriel">
+                            <img class="rounded-circle avatar" src="https://github.com/PinoGabriel.png"
+                                alt="Gabriel Pino avatar">
+                            <span class="ms-3">Gabriel Pino</span>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a class="github-profile" href="https://github.com/Francesco-Rapetti">
+                            <img class="rounded-circle avatar" src="https://github.com/Francesco-Rapetti.png"
+                                alt="Francesco Rapetti avatar">
+                            <span class="ms-3">Francesco Rapetti</span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </footer>
     </div>
 </body>
 

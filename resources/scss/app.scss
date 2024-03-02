@@ -16,6 +16,32 @@ main {
     position: relative
 }
 
+footer {
+    background-color: #212529;
+    color: white;
+    padding: 2rem 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer .avatar {
+    width: 50px;
+    height: 50px;
+}
+
+footer .github-profile {
+    padding: 2rem;
+    border-radius: 16px;
+}
+
+footer .github-profile:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
 .navbar-brand>svg {
     width: 60px;
     margin-right: 12px;
