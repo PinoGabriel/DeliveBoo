@@ -42,6 +42,14 @@ footer .github-profile:hover {
     cursor: pointer;
 }
 
+.jumbotron {
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .navbar-brand>svg {
     width: 60px;
     margin-right: 12px;
@@ -106,6 +114,13 @@ footer .github-profile:hover {
 
 .logo-deliveboo>svg {
     width: 200px;
+}
+
+.wave.upside-down {
+    transform: rotate(180deg);
+    position: relative;
+    top: 0.044px;
+    box-shadow: none !important;
 }
 
 .wave-first {

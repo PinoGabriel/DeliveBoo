@@ -3,7 +3,7 @@
 @section('content')
     <div class="jumbotron glass text-center p-5 rounded-0">
         <div class="container py-5">
-            <div class="logo-deliveboo">
+            <div class="logo-deliveboo mb-5">
                 <svg width="100%" height="100%" viewBox="0 0 1182 1182" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
                     style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
@@ -17,10 +17,10 @@
                     </g>
                 </svg>
             </div>
-            <h1 class="display-5 fw-bold">
+            <h1 class="display-5 fw-bold my-5">
                 BENVENUTO SU DELIVEBOOadmin
             </h1>
-            <p class="fs-4">Qui puoi gestire, modificare e creare i tuoi ristoranti con il relativo menù. Hai a
+            <p class="fs-4 my-5">Qui puoi gestire, modificare e creare i tuoi ristoranti con il relativo menù. Hai a
                 disposizione una dashboard per controllare l'andamento del tuo ristorante e dei singoli piatti.</p>
 
             @guest
@@ -53,9 +53,106 @@
             class="shape-fill"></path>
     </svg>
 
-    <div class="content">
-        <div class="container">
+    <section class="my-5">
 
+        {{-- charts --}}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <div class="container my-5">
+            <div class="row gap-4 py-5">
+                <div class="col-12 col-md-6 glass bg-transparent p-3">
+                    <canvas id="radar-chart"></canvas>
+                </div>
+
+                <div class="col">
+                    <h1 class="my-5">
+                        Grafici interattivi: prendi il controllo del tuo ristorante con DeliveBoo admin</h1>
+                    <p>Con i grafici interattivi di DeliveBoo, hai una finestra cristallina sul tuo ristorante. Monitora
+                        vendite, clienti, tempi di attesa e altro ancora, prendendo decisioni informate per ottimizzare il
+                        tuo business.<br>
+                        DeliveBoo ti aiuta a:
+                    <ul>
+                        <li>Controllare il tuo ristorante</li>
+                        <li>Prendere decisioni informate</li>
+                        <li>Aggiornare periodicamente</li>
+                    </ul>
+                    <br>
+                    Non solo dati, DeliveBoo offre anche:
+                    <ul>
+                        <br>
+                        <li>Cruscotto personalizzabile.</li>
+                        <li>Report dettagliati</li>
+                        <li>Gestione di piatti, ristorante e ordini.</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+    <section class="py-5 glass rounded-0 border-0">
+
+        <div class="container my-5">
+            <h1 class="text-center my-5">Cosa fa DeliveBoo admin?</h1>
+            <div class="row gap-3 justify-content-center">
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="glass bg-trasparent text-center p-3">
+                        <div>
+                            <i class="fa-solid fa-utensils fa-3x mb-3"></i>
+                            <h5>Piatti</h5>
+                            <p>Gestisci i piatti del tuo ristorante.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="glass bg-trasparent text-center p-3">
+                        <div>
+                            <i class="fa-solid fa-user fa-3x mb-3"></i>
+                            <h5>Clienti</h5>
+                            <p>Gestisci i clienti del tuo ristorante.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="glass bg-transparent text-center p-3">
+                        <div>
+                            <i class="fa-solid fa-clock fa-3x mb-3"></i>
+                            <h5>Ordini</h5>
+                            <p>Gestisci gli ordini del tuo ristorante.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <script>
+        // radar chart
+        const radar = document.getElementById('radar-chart');
+        new Chart(radar, {
+            type: 'radar',
+            data: {
+                labels: ['Soddisfazione', 'Sicurezza', 'Prestazioni', 'Pianificazione',
+                    'Problemi'
+                ],
+                datasets: [{
+                    label: 'Cliente',
+                    data: [100, 100, 100, 100, 0],
+                    hoverBorderWidth: 5,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 @endsection
