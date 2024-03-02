@@ -19,13 +19,14 @@ class DishOrderSeeder extends Seeder
             $menu = Restaurant::with('dishes')->find(Order::find($order->id)->restaurant->id)->dishes;
 
             $orderedDishesCount = rand(1, 10);
+            $total = 0;
             for ($i = 0; $i < $orderedDishesCount; $i++) {
                 $dishId = $menu->random()->id;
                 $quantity = rand(1, 5);
-
                 if (DB::table('dish_order')->where('dish_id', $dishId)->where('order_id', $order->id)->exists()) {
                     continue;
                 } else {
+                    $total += ($menu->find($dishId)->price * $quantity);
                     DB::table('dish_order')->insert([
                         'dish_id' => $dishId,
                         'order_id' => $order->id,
@@ -33,6 +34,7 @@ class DishOrderSeeder extends Seeder
                     ]);
                 }
             }
+            $order->update(['total' => $total]);
         }
     }
 }
