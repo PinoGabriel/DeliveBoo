@@ -68,9 +68,176 @@
 
 
 
+    {{-- charts --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div class="container mb-4">
+
+        <div class="row gap-4">
+
+            <div class="col-12 col-md-6 glass p-4">
+                <h3>Rapporto ordini rifiutati/accettati</h3>
+                <canvas id="doughnut-chart"></canvas>
+            </div>
+
+
+            <div class="col glass p-4">
+                <h3>Andamento degli ordini negli ultimi 6 mesi</h3>
+                <canvas id="line-chart"></canvas>
+                <div class="d-flex justify-content-center align-items-center m-4">
+                    <a href="{{ route('admin.orders.index') }}" class="btn btn-secondary"><i
+                            class="fa-solid fa-chart-line me-2"></i>Vedi tutte le statistiche</a>
+                </div>
+            </div>
+
+            <script>
+                let orders = {!! json_encode($orders) !!};
+
+                // doughnut chart
+                const doughnut = document.getElementById('doughnut-chart');
+                let orderStatuses = [0, 0, 0];
+
+                for (let order of orders) {
+                    if (order.status === 'rejected') {
+                        orderStatuses[0]++;
+                    } else if (order.status === 'accepted') {
+                        orderStatuses[1]++;
+                    } else if (order.status === 'pending') {
+                        orderStatuses[2]++;
+                    }
+                }
+                console.log(orderStatuses)
+                let doughnutData = {
+                    labels: ['Rejected', 'Accepted', 'Pending'],
+                    datasets: [{
+                        label: 'Ordini',
+                        data: orderStatuses,
+                        backgroundColor: [
+                            'rgba(255, 61, 61, 0.6)',
+                            'rgba(39, 211, 131, 0.6)',
+                            'rgba(255, 226, 7, 0.6)',
+                        ],
+                        borderColor: [
+                            'rgb(255, 61, 61)',
+                            'rgb(39, 211, 131)',
+                            'rgb(255, 226, 7)',
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+
+                new Chart(doughnut, {
+                    type: 'doughnut',
+                    data: {
+                        labels: doughnutData.labels,
+                        datasets: [{
+                            label: 'Ordini',
+                            data: doughnutData.datasets[0].data,
+                            backgroundColor: doughnutData.datasets[0].backgroundColor,
+                            borderColor: doughnutData.datasets[0].borderColor,
+                            hoverBorderWidth: 5,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+
+                //line chart
+                const line = document.getElementById('line-chart');
+                let lastSixMonths = [];
+                for (let i = 0; i < 6; i++) {
+                    lastSixMonths.push(new Date(new Date().setMonth(new Date().getMonth() - i)).getMonth() + 1)
+                }
+
+                let ordersInLastSixMonth = [0, 0, 0, 0, 0, 0]
+
+                orders.forEach(order => {
+                    let month = new Date(order.created_at).getMonth() + 1
+                    console.log(month)
+                    console.log(lastSixMonths.indexOf(month))
+                    lastSixMonths.indexOf(month) !== -1 ? ordersInLastSixMonth[lastSixMonths.indexOf(month)] += 1 : null
+                })
+                console.log(ordersInLastSixMonth)
+
+                lastSixMonths.forEach((month, i) => {
+                    switch (month) {
+                        case 1:
+                            lastSixMonths[i] = 'Gennaio';
+                            break;
+                        case 2:
+                            lastSixMonths[i] = 'Febbraio';
+                            break;
+                        case 3:
+                            lastSixMonths[i] = 'Marzo';
+                            break;
+                        case 4:
+                            lastSixMonths[i] = 'Aprile';
+                            break;
+                        case 5:
+                            lastSixMonths[i] = 'Maggio';
+                            break;
+                        case 6:
+                            lastSixMonths[i] = 'Giugno';
+                            break;
+                        case 7:
+                            lastSixMonths[i] = 'Luglio';
+                            break;
+                        case 8:
+                            lastSixMonths[i] = 'Agosto';
+                            break;
+                        case 9:
+                            lastSixMonths[i] = 'Settembre';
+                            break;
+                        case 10:
+                            lastSixMonths[i] = 'Ottobre';
+                            break;
+                        case 11:
+                            lastSixMonths[i] = 'Novembre';
+                            break;
+                        case 12:
+                            lastSixMonths[i] = 'Dicembre';
+                            break;
+                        default:
+                            break;
+                    }
+                })
+                lastSixMonths = lastSixMonths.reverse()
+                ordersInLastSixMonth = ordersInLastSixMonth.reverse()
+                console.log(lastSixMonths)
+
+                new Chart(line, {
+                    type: 'line',
+                    data: {
+                        labels: lastSixMonths,
+                        datasets: [{
+                            label: 'Ordini',
+                            data: ordersInLastSixMonth,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+
+
 
     <script>
-        let orders = {!! json_encode($orders) !!};
         orders.forEach(order => {
             let total = 0;
             order.dishes.forEach(dish => {
@@ -236,7 +403,7 @@
             orderRows.forEach(orderRow => {
                 totals.push(orderRow.children[0].children[4].children[0].innerHTML.substring(2));
             })
-            totals.sort()
+            totals.sort((a, b) => a - b)
             if (orderTotal) {
                 totalIcon.classList.remove('fa-sort-up');
                 totalIcon.classList.add('fa-sort-down');
