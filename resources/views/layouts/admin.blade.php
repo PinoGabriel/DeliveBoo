@@ -53,14 +53,14 @@
                                 </li>
 
                                 <!-- Mostra il pulsante solo se c'è almeno un ordine per il ristorante -->
-                                @if ($user->restaurant->orders->count() > 0)
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
-                                            href="{{ route('admin.orders.index') }}">
-                                            <i class="fa-solid fa-clipboard-list fa-lg fa-fw"></i> Lista degli ordini
-                                        </a>
-                                    </li>
-                                @endif
+                                {{-- @if ($user->restaurant->orders->count() > 0) --}}
+                                <li class="nav-item">
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.orders.index') }}">
+                                        <i class="fa-solid fa-clipboard-list fa-lg fa-fw"></i> Lista degli ordini
+                                    </a>
+                                </li>
+                                {{-- @endif --}}
                             @endif
 
                             @if (!$hasRestaurant)
