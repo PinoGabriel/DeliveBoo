@@ -18,13 +18,14 @@
                 </svg>
             </div>
             <h1 class="display-5 fw-bold my-5">
-                BENVENUTO SU DELIVEBOOadmin
+                BENVENUTO SU <span id="DeliveBoo-logo" class="logo m-0 welcome-page">DeliveBoo</span><span id="admin-logo"
+                    class="welcome-page">admin</span>
             </h1>
             <p class="fs-4 my-5">Qui puoi gestire, modificare e creare i tuoi ristoranti con il relativo menù. Hai a
                 disposizione una dashboard per controllare l'andamento del tuo ristorante e dei singoli piatti.</p>
 
             @guest
-                <a href="{{ route('login') }}" class="btn btn-primary btn-lg" type="button">{{ __('Login') }}</a>
+                <a href="{{ route('login') }}" class="btn btn-secondary btn-lg me-3" type="button">{{ __('Login') }}</a>
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="btn btn-primary btn-lg" type="button">{{ __('Register') }}</a>
                 @endif
@@ -53,13 +54,14 @@
             class="shape-fill"></path>
     </svg>
 
-    <section class="my-5">
+    <section class="my-5 text-bool">
 
         {{-- charts --}}
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <div class="container my-5">
             <div class="row gap-4 py-5">
-                <div class="col-12 col-md-6 glass bg-transparent p-3">
+                <div
+                    class="col-12 col-md-6 glass-clear chart-container p-3 d-flex justify-content-center align-items-center">
                     <canvas id="radar-chart"></canvas>
                 </div>
 
@@ -70,24 +72,26 @@
                         vendite, clienti, tempi di attesa e altro ancora, prendendo decisioni informate per ottimizzare il
                         tuo business.<br>
                         DeliveBoo ti aiuta a:
-                    <ul>
-                        <li>Controllare il tuo ristorante</li>
-                        <li>Prendere decisioni informate</li>
-                        <li>Aggiornare periodicamente</li>
-                    </ul>
-                    <br>
-                    Non solo dati, DeliveBoo offre anche:
-                    <ul>
-                        <br>
-                        <li>Cruscotto personalizzabile.</li>
-                        <li>Report dettagliati</li>
-                        <li>Gestione di piatti, ristorante e ordini.</li>
+                    <ul class="fa-ul">
+                        <li><span class="fa-li"><i class="fa-solid fa-chart-line"></i></span>Controllare il tuo ristorante
+                        </li>
+                        <li><span class="fa-li"><i class="fa-solid fa-user"></i></span>Prendere decisioni informate</li>
+                        <li><span class="fa-li"><i class="fa-solid fa-arrows-rotate"></i></span>Aggiornare periodicamente
+                        </li>
                     </ul>
                     </p>
                 </div>
             </div>
         </div>
     </section>
+
+    <svg data-name="Layer 1" class="wave upside-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+        preserveAspectRatio="none">
+        <path
+            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+            class="wave-first"></path>
+    </svg>
+
     <section class="py-5 glass rounded-0 border-0">
 
         <div class="container my-5">
@@ -128,6 +132,142 @@
         </div>
 
     </section>
+    <svg class="wave" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+        preserveAspectRatio="none">
+        <path class="wave-last"
+            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+            opacity=".25" class="shape-fill" fill="#FFFFFF" fill-opacity="0"></path>
+        <path class="wave-middle"
+            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+            opacity=".5" class="shape-fill" fill="#FFFFFF" fill-opacity="0"></path>
+        <path class="wave-first"
+            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+            class="shape-fill"></path>
+    </svg>
+
+    <section class="my-5 text-bool">
+
+        <div class="container my-5">
+            <div class="row gap-4 py-5">
+                <div class="col">
+                    <h1 class="my-5">
+                        Come DeliveBoo aumenta i tuoi profitti
+                    </h1>
+                    <p>
+                        Come DeliveBoo aumenta i tuoi profitti
+                        DeliveBoo è la piattaforma di food delivery più innovativa e conveniente sul mercato, progettata per
+                        aumentare i profitti del tuo ristorante in modo significativo rispetto ai concorrenti. <br>
+                        Ecco alcuni dei modi in cui DeliveBoo ti aiuta a massimizzare le tue entrate:
+                    <ul class="fa-ul">
+                        <li><span class="fa-li"><i class="fa-solid fa-users"></i></span><span class="fw-bold">Ampio
+                                bacino
+                                di utenti:</span> DeliveBoo vanta una base di clienti in
+                            continua crescita, entusiasta di
+                            ordinare cibo online. Il tuo ristorante sarà presente sulla nostra piattaforma, raggiungendo un
+                            pubblico più ampio e aumentando le tue possibilità di ricevere ordini.</li>
+                        <li><span class="fa-li"><i class="fa-solid fa-magnifying-glass"></i></span><span
+                                class="fw-bold">Posizionamento strategico nei risultati di
+                                ricerca:</span> DeliveBoo
+                            utilizza algoritmi avanzati per
+                            posizionare il tuo ristorante in cima ai risultati di ricerca, garantendoti una maggiore
+                            visibilità e attirando più clienti.</li>
+                        <li><span class="fa-li"><i class="fa-solid fa-bullhorn"></i></span><span
+                                class="fw-bold">Marketing mirato:</span> Promuoviamo il tuo
+                            ristorante attraverso campagne
+                            marketing mirate sui social
+                            media e canali di marketing online, aumentando la consapevolezza del tuo brand e attirando nuovi
+                            clienti.</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div
+                    class="col-12 col-md-6 glass-clear chart-container p-3 d-flex justify-content-center align-items-center">
+                    <canvas id="bar-chart" class=""></canvas>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="mt-5 py-5 glass rounded-0">
+        <div class="container py-5">
+            <div class="row gap-4 py-5">
+                <div class="col-12 col-md-6">
+                    <img class="img-fluid rounded-4" src="{{ asset('img/front-end-sample.png') }}" alt="">
+                </div>
+                <div class="col">
+                    <h1>DeliveBoo: l'app di food delivery che unisce bellezza e praticità</h1>
+                    <p>
+                        DeliveBoo non è solo un'app di food delivery, è un'esperienza di design raffinato e intuitività
+                        d'uso. <br>
+                        Un'interfaccia elegante e accattivante:
+                    <ul class="fa-ul">
+                        <li class="my-3"><span class="fa-li"><i class="fa-solid fa-star"></i></span>L'app DeliveBoo si
+                            distingue
+                            per la sua
+                            interfaccia utente moderna e
+                            minimalista, curata nei minimi dettagli per offrirti un'esperienza visiva piacevole e
+                            coinvolgente.</li>
+                        <li class="my-3"><span class="fa-li"><i class="fa-solid fa-image"></i></span>Le immagini dei
+                            piatti sono
+                            di alta qualità
+                            e scattate professionalmente, per stuzzicare il tuo appetito e farti vivere l'emozione di
+                            ordinare il tuo cibo preferito.</li>
+                        <li class="my-3"><span class="fa-li"><i class="fa-solid fa-arrows"></i></span>La navigazione è
+                            fluida e
+                            intuitiva,
+                            permettendoti di trovare il ristorante che cerchi in pochi secondi e ordinare il tuo pasto con
+                            un semplice tocco.</li>
+                    </ul>
+                    </p>
+                    <a href="{{ env('APP_FRONTEND_URL') }}" class="btn btn-primary">Prova DeliveBoo ora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <div class="container">
+            <p class="text-center">Made with &hearts; by</p>
+            <div class="row gap-4 flex-column">
+                <div class="col">
+                    <a class="github-profile" href="https://github.com/ChiaraRuggi">
+                        <img class="rounded-circle avatar" src="https://github.com/ChiaraRuggi.png"
+                            alt="Chiara Ruggi avatar">
+                        <span class="ms-3">Chiara Ruggi</span>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="github-profile" href="https://github.com/SassaroCristian">
+                        <img class="rounded-circle avatar" src="https://github.com/SassaroCristian.png"
+                            alt="Sassaro Cristian avatar">
+                        <span class="ms-3">Cristian Sassaro</span>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="github-profile" href="https://github.com/PinoGabriel">
+                        <img class="rounded-circle avatar" src="https://github.com/PinoGabriel.png"
+                            alt="Gabriel Pino avatar">
+                        <span class="ms-3">Gabriel Pino</span>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="github-profile" href="https://github.com/Francesco-Rapetti">
+                        <img class="rounded-circle avatar" src="https://github.com/Francesco-Rapetti.png"
+                            alt="Francesco Rapetti avatar">
+                        <span class="ms-3">Francesco Rapetti</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
 
 
     <script>
@@ -143,7 +283,9 @@
                     label: 'Cliente',
                     data: [100, 100, 100, 100, 0],
                     hoverBorderWidth: 5,
-                    borderWidth: 1
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(76, 232, 249, 0.8)'
+
                 }]
             },
             options: {
@@ -152,6 +294,30 @@
                         beginAtZero: true
                     }
                 }
+            }
+        });
+
+        // bar chart
+        const bar = document.getElementById('bar-chart');
+        new Chart(bar, {
+            type: 'bar',
+            data: {
+                labels: ['DeliveBoo', 'Altre piattaforme'],
+                datasets: [{
+                    label: 'Profitto',
+                    data: [100, 10],
+                    hoverBorderWidth: 5,
+                    borderWidth: 0,
+                    backgroundColor: 'rgba(76, 232, 249, 0.8)'
+                }],
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                backgroundColor: 'rgba(76, 232, 249, 1)'
             }
         });
     </script>
