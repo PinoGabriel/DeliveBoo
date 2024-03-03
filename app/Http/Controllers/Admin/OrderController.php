@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Controllers\Controller;
+use App\Models\restaurant;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -17,23 +18,19 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $user = auth()->user();
-        $restaurantId = Auth::user()->restaurant->id;
+{
+    $user = auth()->user();
+    $restaurantId = Auth::user()->restaurant->id;
 
-        $orders = Order::with(['restaurant', 'dishes'])
-            ->whereHas('restaurant', function ($query) use ($restaurantId) {
-                $query->where('id', $restaurantId);
-            })
-            ->get();
+    $orders = Order::with(['restaurant', 'dishes'])
+        ->whereHas('restaurant', function ($query) use ($restaurantId) {
+            $query->where('id', $restaurantId);
+        })
+        ->get();
 
-        if ($orders->isEmpty()) {
-            return view('errors.orders.index_error', compact('user'));
-        } else {
-            return view('admin.orders.index', compact('orders'));
-        }
-    }
 
+    return view('admin.orders.index', compact('orders'));
+}
     /**
      * Show the form for creating a new resource.
      *
