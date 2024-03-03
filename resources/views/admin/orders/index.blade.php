@@ -85,8 +85,8 @@
                 <h3>Andamento degli ordini negli ultimi 6 mesi</h3>
                 <canvas id="line-chart"></canvas>
                 <div class="d-flex justify-content-center align-items-center m-4">
-                    <a href="{{ route('admin.orders.index') }}" class="btn btn-secondary"><i
-                            class="fa-solid fa-chart-line me-2"></i>Vedi tutte le statistiche</a>
+                    <a href="{{ route('admin.orders.index') }}" class="btn btn-primary"><i
+                            class="fa-solid fa-chart-line me-1"></i>Vedi tutte le statistiche</a>
                 </div>
             </div>
 
@@ -106,7 +106,6 @@
                         orderStatuses[2]++;
                     }
                 }
-                console.log(orderStatuses)
                 let doughnutData = {
                     labels: ['Rejected', 'Accepted', 'Pending'],
                     datasets: [{
@@ -160,11 +159,8 @@
 
                 orders.forEach(order => {
                     let month = new Date(order.created_at).getMonth() + 1
-                    console.log(month)
-                    console.log(lastSixMonths.indexOf(month))
                     lastSixMonths.indexOf(month) !== -1 ? ordersInLastSixMonth[lastSixMonths.indexOf(month)] += 1 : null
                 })
-                console.log(ordersInLastSixMonth)
 
                 lastSixMonths.forEach((month, i) => {
                     switch (month) {
@@ -210,7 +206,6 @@
                 })
                 lastSixMonths = lastSixMonths.reverse()
                 ordersInLastSixMonth = ordersInLastSixMonth.reverse()
-                console.log(lastSixMonths)
 
                 new Chart(line, {
                     type: 'line',
@@ -219,7 +214,9 @@
                         datasets: [{
                             label: 'Ordini',
                             data: ordersInLastSixMonth,
-                            borderWidth: 1
+                            borderWidth: 1,
+                            borderColor: 'rgba(142, 250, 246, 1)',
+                            backgroundColor: 'rgba(142, 250, 246, 1)'
                         }]
                     },
                     options: {
