@@ -1,13 +1,14 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container-fluid my-4 card">
+    <div class="container-fluid my-4 glass p-3">
         <div class="row">
-            <div class="img-container col-6">
-                <img src="{{ substr($restaurant->img, 0, 6) == 'upload' ? asset('/storage' . '/' . $restaurant->img) : $restaurant->img }}"
+            <div class="img-container col">
+                <img class="img-fluid rounded-4"
+                    src="{{ substr($restaurant->img, 0, 6) == 'upload' ? asset('/storage' . '/' . $restaurant->img) : $restaurant->img }}"
                     alt="">
             </div>
-            <div class="col-6 d-flex flex-column justify-content-between">
+            <div class="col d-flex flex-column justify-content-between">
                 <div class="mt-2">
                     <h1>{{ $restaurant->name }}</h1>
                     <ul class="fa-ul">
@@ -90,20 +91,17 @@
     </form>
     <style scoped>
         .img-container {
-            padding: 0 !important;
             max-width: 600px;
             max-height: 400px;
             object-fit: cover;
             object-position: center;
-            border-radius: 16px;
-            overflow: hidden;
         }
 
         .img-container img {
             object-position: center;
             object-fit: cover;
-            width: 100%;
-            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
         }
 
         .section-title {
