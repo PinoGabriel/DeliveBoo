@@ -27,7 +27,7 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark shadow-sm">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark shadow-sm position-sticky top-0 z-3 w-100">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <svg width="100%" height="100%" viewBox="0 0 1182 1182" version="1.1"
@@ -43,8 +43,8 @@
                                 style="fill:#81d5cd;fill-rule:nonzero;" />
                         </g>
                     </svg>
-                    <p class="logo m-0">DeliveBoo</p>
-                    <span>admin</span>
+                    <p id="DeliveBoo-logo" class="logo m-0">DeliveBoo</p>
+                    <span id="admin-logo">admin</span>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
 
@@ -68,7 +68,8 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link btn btn-primary"
+                                        href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -98,47 +99,15 @@
             </div>
         </nav>
 
-        <main class="">
-            @yield('content')
-        </main>
+        <main>
+            <div id="body-content" class="border-0 rounded-0 h-100">
 
-        <footer>
-            <div class="container">
-                <p class="text-center">Made with &hearts; by</p>
-                <div class="row gap-4 flex-column">
-                    <div class="col">
-                        <a class="github-profile" href="https://github.com/ChiaraRuggi">
-                            <img class="rounded-circle avatar" src="https://github.com/ChiaraRuggi.png"
-                                alt="Chiara Ruggi avatar">
-                            <span class="ms-3">Chiara Ruggi</span>
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a class="github-profile" href="https://github.com/SassaroCristian">
-                            <img class="rounded-circle avatar" src="https://github.com/SassaroCristian.png"
-                                alt="Sassaro Cristian avatar">
-                            <span class="ms-3">Cristian Sassaro</span>
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a class="github-profile" href="https://github.com/PinoGabriel">
-                            <img class="rounded-circle avatar" src="https://github.com/PinoGabriel.png"
-                                alt="Gabriel Pino avatar">
-                            <span class="ms-3">Gabriel Pino</span>
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a class="github-profile" href="https://github.com/Francesco-Rapetti">
-                            <img class="rounded-circle avatar" src="https://github.com/Francesco-Rapetti.png"
-                                alt="Francesco Rapetti avatar">
-                            <span class="ms-3">Francesco Rapetti</span>
-                        </a>
-                    </div>
-
-                </div>
+                @yield('content')
 
             </div>
-        </footer>
+        </main>
+
+
     </div>
 </body>
 
