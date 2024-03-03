@@ -40,7 +40,8 @@
                         {{ number_format($order->total, 2) }}
                     </li>
                 </ul>
-                <a href="{{ route('admin.orders.index') }}" class="btn btn-secondary mt-3">Torna alla Lista degli Ordini</a>
+                <a href="{{ route('admin.orders.index') }}" class="btn btn-primary mt-3"><i
+                        class="fa-solid fa-clipboard-list me-2"></i>Torna alla Lista degli Ordini</a>
             </div>
 
             <div class="col-md col-12 glass p-3">
