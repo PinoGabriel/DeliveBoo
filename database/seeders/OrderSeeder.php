@@ -27,7 +27,7 @@ class OrderSeeder extends Seeder
             $newOrder->client_address = $faker->address();
             $newOrder->restaurant_id = $faker->randomElement($this->getRestaurantID());
             $newOrder->status = $this->getStatus();
-            $newOrder->created_at = $faker->dateTimeBetween('-6 months', 'now');
+            $newOrder->created_at = $faker->dateTimeBetween('-5 months', 'now');
             $newOrder->save();
         }
     }
