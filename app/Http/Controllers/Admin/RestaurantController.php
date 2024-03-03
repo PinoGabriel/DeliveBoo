@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Dish;
 use App\Models\Restaurant;
 use App\Models\Type;
+use App\Models\Order;
 use App\Http\Requests\StorerestaurantRequest;
 use App\Http\Requests\UpdaterestaurantRequest;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,6 @@ class RestaurantController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
 
 
@@ -37,7 +37,6 @@ class RestaurantController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -80,7 +79,6 @@ class RestaurantController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -90,14 +88,18 @@ class RestaurantController extends Controller
             return view('errors.restaurants.show_error', compact("user", "restaurant"));
         }
         $types = Type::all();
-        return view("admin.restaurants.show", compact("user", "restaurant", "types"));
+        $orders = Order::with(['restaurant', 'dishes'])
+            ->whereHas('restaurant', function ($query) use ($restaurant) {
+                $query->where('id', $restaurant->id);
+            })
+            ->get();
+        return view("admin.restaurants.show", compact("user", "restaurant", "types", "orders"));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
