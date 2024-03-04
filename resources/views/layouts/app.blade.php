@@ -10,6 +10,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Fontawesome 6 cdn -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'
+        integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=='
+        crossorigin='anonymous' referrerpolicy='no-referrer' />
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,10 +27,9 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark shadow-sm">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark shadow-sm position-sticky top-0 z-3 w-100">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
                     <svg width="100%" height="100%" viewBox="0 0 1182 1182" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         xml:space="preserve" xmlns:serif="http://www.serif.com/"
@@ -40,8 +43,8 @@
                                 style="fill:#81d5cd;fill-rule:nonzero;" />
                         </g>
                     </svg>
-                    <p class="logo m-0">DeliveBoo</p>
-                    <span>admin</span>
+                    <p id="DeliveBoo-logo" class="logo m-0">DeliveBoo</p>
+                    <span id="admin-logo">admin</span>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
 
@@ -65,7 +68,8 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link btn btn-primary"
+                                        href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -95,9 +99,15 @@
             </div>
         </nav>
 
-        <main class="">
-            @yield('content')
+        <main>
+            <div id="body-content" class="border-0 rounded-0 h-100">
+
+                @yield('content')
+
+            </div>
         </main>
+
+
     </div>
 </body>
 

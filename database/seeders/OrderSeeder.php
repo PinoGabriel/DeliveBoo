@@ -27,9 +27,9 @@ class OrderSeeder extends Seeder
             $newOrder->client_address = $faker->address();
             $newOrder->restaurant_id = $faker->randomElement($this->getRestaurantID());
             $newOrder->status = $this->getStatus();
+            $newOrder->created_at = $faker->dateTimeBetween('-5 months', 'now');
             $newOrder->save();
         }
-
     }
     private function getRestaurantID()
     {
@@ -38,7 +38,7 @@ class OrderSeeder extends Seeder
 
     private function getStatus()
     {
-        $status= ["pending", "accepted", "rejected"];
+        $status = ["pending", "accepted", "rejected"];
         return $status[array_rand($status, 1)];
     }
 }

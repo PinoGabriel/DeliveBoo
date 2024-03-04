@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('client_mail', 100);
             $table->string('client_phone', 164);
             $table->text('client_address');
+            $table->double('total', 6, 2)->default(0);
             $table->timestamps();
         });
     }

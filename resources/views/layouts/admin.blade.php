@@ -33,58 +33,96 @@
 <body>
     <div id="app">
 
-        <div class="container-fluid vh-100">
-            <div class="row h-100">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
-                    <div class="position-sticky pt-3">
-                        <ul class="nav flex-column">
+        <div class="vh-100">
+            <div class="h-100">
+                <nav id="sidebarMenu" class="d-md-block bg-dark navbar-dark sidebar collapse position-fixed h-100">
+                    <div class="position-sticky py-5 h-100">
+                        <ul class="nav flex-column h-100 position-relative">
 
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="/">
-                                    <i class="fa-solid fa-home-alt fa-lg fa-fw"></i> Home
+                            <li class="nav-item my-1">
+                                <a class="nav-link text-white d-flex align-items-center justify-content-center flex-column"
+                                    href="/">
+                                    <div class="nav-link-icon">
+                                        <i class="fa-solid fa-home-alt fa-lg fa-fw"></i>
+                                    </div>
+                                    <div class="mt-1 text-center">
+                                        Home
+                                    </div>
                                 </a>
                             </li>
 
                             @if ($hasRestaurant)
-                                <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.show' ? 'bg-secondary' : '' }}"
+                                <!-- Mostra il pulsante solo se c'è un ristorante -->
+                                <li class="nav-item my-1">
+                                    <a class="nav-link text-white d-flex align-items-center justify-content-center flex-column"
                                         href="{{ route('admin.restaurants.show', $user->restaurant) }}">
-                                        <i class="fa-solid fas fa-building fa-lg fa-fw"></i> Ristorante
+                                        <div
+                                            class="nav-link-icon {{ Route::currentRouteName() == 'admin.restaurants.show' ? 'bg-secondary' : '' }}">
+                                            <i class="fa-solid fas fa-utensils fa-lg fa-fw"></i>
+                                        </div>
+                                        <div class="mt-1 text-center">
+                                            Ristorante
+                                        </div>
                                     </a>
                                 </li>
+
+                                <!-- Mostra il pulsante solo se c'è almeno un ordine per il ristorante -->
+                                @if ($user->restaurant->orders)
+                                    <li class="nav-item my-1">
+                                        <a class="nav-link text-white d-flex align-items-center justify-content-center flex-column"
+                                            href="{{ route('admin.orders.index') }}">
+                                            <div
+                                                class="nav-link-icon  {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}">
+                                                <i class="fa-solid fa-clipboard-list fa-lg fa-fw"></i>
+                                            </div>
+                                            <div class="mt-1 text-center">
+                                                Ordini
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endif
                             @endif
 
                             @if (!$hasRestaurant)
-                                <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.create' ? 'bg-secondary' : '' }}"
+                                <li class="nav-item my-1">
+                                    <a class="nav-link text-white d-flex align-items-center justify-content-center flex-column"
                                         href="{{ route('admin.restaurants.create') }}">
-                                        <i class="fa-solid fas fa-utensils fa-lg fa-fw"></i> Crea un ristorante
+                                        <div
+                                            class="nav-link-icon {{ Route::currentRouteName() == 'admin.restaurants.create' ? 'bg-secondary' : '' }}">
+                                            <i class="fa-solid fas fa-plus fa-lg fa-fw"></i>
+                                        </div>
+                                        <div class="mt-1 text-center">
+                                            Crea un ristorante
+                                        </div>
                                     </a>
                                 </li>
                             @endif
 
                             @if ($hasRestaurant)
-                                <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dishes.create' ? 'bg-secondary' : '' }}"
+                                <li class="nav-item my-1">
+                                    <a class="nav-link text-white d-flex align-items-center justify-content-center flex-column"
                                         href="{{ route('admin.dishes.create') }}">
-                                        <i class="fa-solid fas fa-plate-wheat fa-lg fa-fw"></i> Aggiungi un piatto
+                                        <div
+                                            class="nav-link-icon {{ Route::currentRouteName() == 'admin.dishes.create' ? 'bg-secondary' : '' }}">
+                                            <i class="fa-solid fas fa-plus fa-lg fa-fw"></i>
+                                        </div>
+                                        <div class="mt-1 text-center">
+                                            Aggiungi un piatto
+                                        </div>
                                     </a>
                                 </li>
                             @endif
 
-                            @if ($hasRestaurant)
-                                <li class="nav-item">
-                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' }}"
-                                        href="{{ route('admin.orders.show', $user->restaurant) }}">
-                                        <i class="fa-solid fa-clipboard-list fa-lg fa-fw"></i> Lista degli ordini
-                                    </a>
-                                </li>
-                            @endif
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('logout') }}"
+                            <li class="nav-item my-1 position-absolute w-100 bottom-0">
+                                <a class="nav-link text-white d-flex align-items-center justify-content-center flex-column"
+                                    href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> {{ __('Logout') }}
+                                    <div class="nav-link-icon">
+                                        <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i>
+                                    </div>
+                                    <div class="mt-1 text-center">
+                                        {{ __('Logout') }}
+                                    </div>
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -96,8 +134,11 @@
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    @yield('content')
+                <main class="">
+                    <div id="body-content" class="px-4 w-sm-100 position-sm-static admin">
+                        @yield('content')
+
+                    </div>
                 </main>
             </div>
         </div>
