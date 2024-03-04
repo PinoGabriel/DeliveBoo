@@ -19,7 +19,7 @@
         <div class="row">
 
             {{-- form --}}
-            <form action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data">
+            <form id="dishForm" action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 {{-- name input --}}
                 <div class="mb-3">
@@ -45,7 +45,7 @@
                     <div class="w-50">
                         <label for="price" class="form-label">Price*</label>
                         <input type="number" step=".01" class="form-control @error('price') is-invalid @enderror"
-                            id="price" name="price" value = "{{ old('price') ?? '' }}" placeholder="00.00" required>
+                            id="price" name="price" value="{{ old('price') ?? '' }}" placeholder="00.00" required>
                         @error('price')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -81,4 +81,20 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('dishForm');
+
+            form.addEventListener('submit', function(event) {
+                const priceInput = document.getElementById('price');
+                const price = parseFloat(priceInput.value);
+
+                if (price < 0) {
+                    alert('Il prezzo non può essere negativo');
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 @endsection

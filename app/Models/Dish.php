@@ -29,4 +29,15 @@ class Dish extends Model
     {
         return $this->belongsToMany(Order::class)->withPivot('quantity');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($dish) {
+            if ($dish->price < 0) {
+                throw new \Exception("Price cannot be negative.");
+            }
+        });
+    }
 }

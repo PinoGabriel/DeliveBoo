@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 
 class DishController extends Controller
@@ -53,6 +54,9 @@ class DishController extends Controller
     {
         $user = auth()->user();
         $data = $request->all();
+        if ($data['price'] < 0) {
+            throw ValidationException::withMessages(['price' => 'Il prezzo non può essere negativo']);
+        }
         $path = Storage::disk('public')->put('uploads/dishes', $request['img']);
         $data['img'] = $path;
         $data['user_id'] = $user->id;
