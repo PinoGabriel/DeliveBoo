@@ -2,6 +2,9 @@
     $user = auth()->user();
     $hasRestaurant = $user->restaurant !== null;
 
+    $orders = App\Models\Order::with(['restaurant', 'dishes'])->whereHas('restaurant', function ($query) use ($user) {
+        $query->where('id', $user->restaurant->id);
+    });
 @endphp
 
 
@@ -67,7 +70,7 @@
                                 </li>
 
                                 <!-- Mostra il pulsante solo se c'è almeno un ordine per il ristorante -->
-                                @if ($user->restaurant->orders)
+                                @if ($orders->count() > 0)
                                     <li class="nav-item my-1">
                                         <a class="nav-link text-white d-flex align-items-center justify-content-center flex-column"
                                             href="{{ route('admin.orders.index') }}">
