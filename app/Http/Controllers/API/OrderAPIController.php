@@ -17,7 +17,7 @@ class OrderAPIController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => Order::with(['restaurant', 'dishes'])->get()
+            'payload' => Order::with(['restaurant', 'dishes'])->get()
         ]);
     }
 
@@ -31,7 +31,7 @@ class OrderAPIController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => Order::with(['restaurant', 'dishes'])->find($id)
+            'payload' => Order::with(['restaurant', 'dishes'])->find($id)
         ]);
     }
 }

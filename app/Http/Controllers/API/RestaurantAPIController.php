@@ -17,7 +17,7 @@ class RestaurantAPIController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => Restaurant::with(['user', 'types', 'dishes'])->get()
+            'payload' => Restaurant::with(['user', 'types', 'dishes'])->get()
         ]);
     }
 
@@ -31,7 +31,7 @@ class RestaurantAPIController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => Restaurant::with(['user', 'types', 'dishes'])->find($id)
+            'payload' => Restaurant::with(['user', 'types', 'dishes'])->find($id)
         ]);
     }
 }

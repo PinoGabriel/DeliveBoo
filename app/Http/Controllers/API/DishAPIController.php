@@ -17,7 +17,7 @@ class DishAPIController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => Dish::with(['restaurant', 'orders'])->get()
+            'payload' => Dish::with(['restaurant', 'orders'])->get()
         ]);
     }
 
@@ -31,7 +31,7 @@ class DishAPIController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => Dish::with(['restaurant', 'orders'])->find($id)
+            'payload' => Dish::with(['restaurant', 'orders'])->find($id)
         ]);
     }
 }

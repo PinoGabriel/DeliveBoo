@@ -17,7 +17,7 @@ class TypeAPIController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => Type::with(['restaurants'])->get()
+            'payload' => Type::with(['restaurants'])->get()
         ]);
     }
 
@@ -31,7 +31,7 @@ class TypeAPIController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => Type::with(['restaurants'])->find($id)
+            'payload' => Type::with(['restaurants'])->find($id)
         ]);
     }
 }
