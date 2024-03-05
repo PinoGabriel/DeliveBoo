@@ -85,7 +85,7 @@
                 <h3>Andamento degli ordini negli ultimi 6 mesi</h3>
                 <canvas id="line-chart"></canvas>
                 <div class="d-flex justify-content-center align-items-center m-4">
-                    <a href="{{ route('admin.orders.index') }}" class="btn btn-primary"><i
+                    <a href="{{ route('admin.statistics') }}" class="btn btn-primary"><i
                             class="fa-solid fa-chart-line me-1"></i>Vedi tutte le statistiche</a>
                 </div>
             </div>

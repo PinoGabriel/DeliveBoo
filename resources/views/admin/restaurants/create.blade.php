@@ -80,7 +80,7 @@
 
         <div class="d-flex gap-3 mb-1">
             <button type="submit" class="btn btn-primary">Aggiungi</button>
-            <a href="{{ route('admin.restaurants.create') }}"
+            <a href="{{ url()->previous() }}"
                 class="btn btn-secondary @if (!$user->restaurant) disabled @endif">Annulla</a>
         </div>
         </form>

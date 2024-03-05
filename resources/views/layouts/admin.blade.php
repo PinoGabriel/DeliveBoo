@@ -90,6 +90,21 @@
                                 @endif
                             @endif
 
+                            @if ($hasRestaurant && $orders->count() > 0)
+                                <li class="nav-item my-1">
+                                    <a class="nav-link text-white d-flex align-items-center justify-content-center flex-column"
+                                        href="{{ route('admin.statistics') }}">
+                                        <div
+                                            class="nav-link-icon  {{ Route::currentRouteName() == 'admin.statistics' ? 'bg-secondary' : '' }}">
+                                            <i class="fa-solid fa-chart-simple fa-lg fa-fw"></i>
+                                        </div>
+                                        <div class="mt-1 text-center">
+                                            Statistiche
+                                        </div>
+                                    </a>
+                                </li>
+                            @endif
+
                             @if (!$hasRestaurant)
                                 <li class="nav-item my-1">
                                     <a class="nav-link text-white d-flex align-items-center justify-content-center flex-column"
