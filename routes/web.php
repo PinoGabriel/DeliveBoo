@@ -5,7 +5,8 @@ use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\DishController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\WelcomeController; // Aggiunto per il WelcomeController
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\BraintreeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,10 @@ use App\Http\Controllers\WelcomeController; // Aggiunto per il WelcomeController
 */
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
+Route::get('/generate-client-token',[BraintreeController::class, 'generateClientToken'])->name('braintree.token');
+Route::post('/process-payment', [BraintreeController::class, 'processPayment'])->name('braintree.payments');
+
 
 Route::middleware(['auth'])
     ->prefix('admin')
