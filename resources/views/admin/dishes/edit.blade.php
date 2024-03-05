@@ -71,7 +71,7 @@
 
         <div class="d-flex gap-3 mb-1">
             <button type="submit" class="btn btn-primary">Modifica</button>
-            <a href="{{ route('admin.dishes.index') }}" class="btn btn-secondary">Annulla</a>
+            <a href="{{ url()->previous() }}" class="btn btn-secondary">Annulla</a>
         </div>
         </form>
     </div>

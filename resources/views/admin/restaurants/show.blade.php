@@ -85,7 +85,8 @@
                 <canvas id="bar-chart"></canvas>
 
                 <div class="d-flex justify-content-center align-items-center m-5">
-                    <a href="" class="btn btn-primary"><i class="fa-solid fa-chart-line fs-5 me-1"></i> Visualizza
+                    <a href="{{ route('admin.statistics') }}" class="btn btn-primary"><i
+                            class="fa-solid fa-chart-line fs-5 me-1"></i> Visualizza
                         statistiche</a>
 
                 </div>
