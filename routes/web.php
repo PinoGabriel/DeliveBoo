@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\DishController;
+use App\Http\Controllers\Admin\StatisticsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\WelcomeController; // Aggiunto per il WelcomeController
@@ -28,6 +29,7 @@ Route::middleware(['auth'])
         Route::resource('restaurants', RestaurantController::class);
         Route::resource('dishes', DishController::class);
         Route::resource('orders', OrderController::class);
+        Route::get('/statistics', [StatisticsController::class, 'index'])->name('statistics');
     });
 
 require __DIR__ . '/auth.php';
