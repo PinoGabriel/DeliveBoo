@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Braintree;
+use Braintree\Gateway;
+use App\Http\Requests\Braintree\BraintreeRequest;
+
 
 class BraintreeController extends Controller
 {
@@ -21,7 +23,7 @@ class BraintreeController extends Controller
     }
 
     // Funzione per elaborare un pagamento
-    public function processPayment(Request $request)
+    public function processPayment(BraintreeRequest $request, Gateway $gateway)
     {
         // Creo un'istanza del gateway Braintree per l'elaborazione del pagamento
         $gateway = new Braintree\Gateway(config('services.braintree'));
