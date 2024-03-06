@@ -451,7 +451,7 @@
         }
 
         #table-content {
-            max-height: 50vh;
+            max-height: 30vh;
             overflow-y: auto;
             overflow-x: hidden;
         }
