@@ -14,7 +14,8 @@ class Order extends Model
         'client_surname',
         'client_mail',
         'client_phone',
-        'client_address'
+        'client_address',
+        'total'
     ];
 
     public function restaurant()
