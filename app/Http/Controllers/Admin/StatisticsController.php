@@ -14,11 +14,22 @@ class StatisticsController extends Controller
         $user = auth()->user();
         $restaurant = $user->restaurant;
 
+        if (!$restaurant) {
+            return view('errors.statistics.index_error');
+        }
+
         $orders = Order::with(['restaurant', 'dishes'])
             ->whereHas('restaurant', function ($query) use ($restaurant) {
-                $query->where('id', $restaurant->id);
+                // Controlla se $restaurant è null prima di accedere alla sua proprietà 'id'
+                if ($restaurant) {
+                    $query->where('id', $restaurant->id);
+                }
             })
             ->get();
+
+        if ($orders->isEmpty()) {
+            return view('errors.statistics.index_error', compact('user'));
+        }
         return view('admin.statistics.index', compact('user', 'orders', 'restaurant'));
     }
 }
