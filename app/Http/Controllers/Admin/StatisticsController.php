@@ -15,7 +15,7 @@ class StatisticsController extends Controller
         $restaurant = $user->restaurant;
 
         if (!$restaurant) {
-            return view('errors.statistics.index_error');
+            return view('errors.restaurants.index_error');
         }
 
         $orders = Order::with(['restaurant', 'dishes'])
