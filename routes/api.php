@@ -39,3 +39,5 @@ Route::get('/users', function () {
     $users = User::with(['restaurant'])->get();
     return response()->json(['users' => $users]);
 });
+
+Route::post('/orders', [OrderAPIController::class, "store"]);
