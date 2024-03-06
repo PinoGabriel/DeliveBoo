@@ -157,9 +157,12 @@
                 </nav>
 
                 <main class="">
-                    <div id="body-content" class="px-4 w-sm-100 position-sm-static admin">
-                        @yield('content')
+                    <div id="body-content-container" class="overflow-hidden">
 
+                        <div id="body-content" class="px-4 w-sm-100 position-sm-static admin">
+                            @yield('content')
+
+                        </div>
                     </div>
                 </main>
             </div>

@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    #body-content {
+    #body-content-container {
         width: 100% !important;
         position: static !important;
     }
@@ -65,17 +65,23 @@ body {
 }
 
 main #body-content {
-    border: 16px solid #212529;
-    border-radius: 32px;
+    // border: 16px solid #212529;
+    // border-radius: 32px;
     background: rgb(124, 227, 254);
     background: radial-gradient(circle, rgba(124, 227, 254, 1) 0%, rgba(4, 128, 133, 1) 100%);
 }
 
-main #body-content.admin {
+main #body-content-container {
+    border: 16px solid #212529;
+    border-radius: 32px;
     height: 100vh;
     width: calc(100% - var(--sidebar-menu-width));
     position: relative;
     left: var(--sidebar-menu-width);
+}
+
+main #body-content.admin {
+    height: 100%;
     overflow: auto;
 }
 
