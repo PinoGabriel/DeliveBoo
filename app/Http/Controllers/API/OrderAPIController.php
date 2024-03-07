@@ -59,7 +59,7 @@ class OrderAPIController extends Controller
         }
         return response()->json([
             'success' => true,
-            'payload' => $request->dishes[0]['quantity']
+            'payload' => $order
         ]);
     }
 }
