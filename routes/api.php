@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\BraintreeController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -34,6 +36,10 @@ Route::get('/dishes/{id}', [DishAPIController::class, 'show']);
 
 Route::get('/orders', [OrderAPIController::class, 'index']);
 Route::get('/orders/{id}', [OrderAPIController::class, 'show']);
+
+// Rotte per Braintree
+Route::get('/braintree/client-token', [BraintreeController::class, 'generateClientToken']);
+Route::post('/braintree/process-payment', [BraintreeController::class, 'processPayment']);
 
 Route::get('/users', function () {
     $users = User::with(['restaurant'])->get();
