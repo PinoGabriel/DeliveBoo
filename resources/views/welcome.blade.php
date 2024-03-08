@@ -250,17 +250,17 @@
                     </a>
                 </div>
                 <div class="col">
-                    <a class="github-profile" href="https://github.com/PinoGabriel">
-                        <img class="rounded-circle avatar" src="https://github.com/PinoGabriel.png"
-                            alt="Gabriel Pino avatar">
-                        <span class="ms-3">Gabriel Pino</span>
-                    </a>
-                </div>
-                <div class="col">
                     <a class="github-profile" href="https://github.com/Francesco-Rapetti">
                         <img class="rounded-circle avatar" src="https://github.com/Francesco-Rapetti.png"
                             alt="Francesco Rapetti avatar">
                         <span class="ms-3">Francesco Rapetti</span>
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="github-profile" href="https://github.com/PinoGabriel">
+                        <img class="rounded-circle avatar" src="https://github.com/PinoGabriel.png"
+                            alt="Gabriel Pino avatar">
+                        <span class="ms-3">Gabriel Pino</span>
                     </a>
                 </div>
 
