@@ -47,3 +47,4 @@ Route::get('/users', function () {
 });
 
 Route::post('/orders', [OrderAPIController::class, "store"]);
+Route::post('/orders/{id}', [OrderAPIController::class, "update"]);
