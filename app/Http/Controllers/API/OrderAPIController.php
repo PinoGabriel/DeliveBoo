@@ -64,4 +64,11 @@ class OrderAPIController extends Controller
             'payload' => $order
         ]);
     }
+
+    public function update(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $order->status = $request->status;
+        $order->update();
+    }
 }
