@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreOrderRequest;
 
 
 class OrderAPIController extends Controller
@@ -37,8 +38,9 @@ class OrderAPIController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
+
         $order = new Order();
         $order->client_name = $request->client_name;
         $order->client_surname = $request->client_surname;
