@@ -22,8 +22,7 @@ use App\Http\Controllers\BraintreeController;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
-Route::get('/generate-client-token',[BraintreeController::class, 'generateClientToken'])->name('braintree.token');
-Route::post('/process-payment', [BraintreeController::class, 'processPayment'])->name('braintree.payments');
+
 
 
 Route::middleware(['auth'])

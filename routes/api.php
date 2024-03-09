@@ -48,3 +48,6 @@ Route::get('/users', function () {
 
 Route::post('/orders', [OrderAPIController::class, "store"]);
 Route::post('/orders/{id}', [OrderAPIController::class, "update"]);
+
+Route::get('/generate-client-token', [BraintreeController::class, 'generateClientToken'])->name('braintree.token');
+Route::post('/process-payment', [BraintreeController::class, 'processPayment'])->name('braintree.payments');
