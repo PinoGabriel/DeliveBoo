@@ -41,10 +41,10 @@
     <div id="app">
 
         <div class="vh-100">
-            <div class="h-100">
-                <nav id="sidebarMenu" class="d-md-block bg-dark navbar-dark sidebar collapse position-fixed h-100">
-                    <div class="position-sticky py-5 h-100">
-                        <ul class="nav flex-column h-100 position-relative">
+            <div id="content-wrapper" class="h-100">
+                <nav id="sidebarMenu" class="bg-dark navbar-dark sidebar position-fixed">
+                    <div id="sidebarMenuInner" class="position-sticky py-5 h-100">
+                        <ul class="nav flex-md-column h-100 position-relative flex-nowrap">
 
                             <li class="nav-item my-1">
                                 <a class="nav-link text-white d-flex align-items-center justify-content-center flex-column"
@@ -135,7 +135,7 @@
                                 </li>
                             @endif
 
-                            <li class="nav-item my-1 position-absolute w-100 bottom-0">
+                            <li class="d-none d-md-block nav-item my-1 position-absolute w-100 bottom-0">
                                 <a class="nav-link text-white d-flex align-items-center justify-content-center flex-column"
                                     href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
